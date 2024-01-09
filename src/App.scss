@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Lato, sans-serif;
+}
+
+// Variables
+$LIGHT_BLUE: #007bff;
+$BLUE: #0055b8;
+$BLACK: #343a40;
+$GRAY: #EFEFEE;
+
+// Styles
+form {
+
+  // Head
+  #head {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    // background-color: white;
+    color: $BLACK;
+    align-items: center;
+    box-shadow: 0px 0px 7px $BLACK;
+    z-index: 2;
+  }
+
+  #container {
+    width: min(80%,1400px);
+    position: absolute;
+    margin: auto;
+    padding-top: 200px;
+    inset: 0 0 auto 0;
+    height: 100vh;
+    background-color: $GRAY;
+
+    div {
+      width: 80%;
+      background-color: red;
+      margin: auto;
+    }
+
+  }
+
+}
+
+// The Form
+
