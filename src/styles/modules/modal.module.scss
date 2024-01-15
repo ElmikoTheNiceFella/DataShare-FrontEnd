@@ -11,9 +11,23 @@ $BORDER: 2px;
   align-items: center;
   .modal {
     width: 30%;
-    height: 30%;
     padding: 40px 60px;
     background-color: white;
+    position: relative;
+    .close {
+      all: unset;
+      cursor: pointer;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      right: -16px;
+      top: -16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: large;
+      color: rgba($color: $BLACK, $alpha: 0.6);
+    }
     .inputContainer {
       display: flex;
       align-items: center;
@@ -34,7 +48,7 @@ $BORDER: 2px;
         color: $BLUE;
         left: 10px;
         top: -25px;
-        font-size: medium;
+        font-size: 16px;
       }
     }
     .modalInputPlaceholder {
