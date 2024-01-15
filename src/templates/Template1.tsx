@@ -2,8 +2,21 @@
 import styles from '../styles/modules/template1.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+// Components
+import { Modal } from './components';
+import { useState } from 'react';
 
 const Template1 = () => {
+
+  const [open, setOpen] = useState(false);
+  const [type, setType] = useState("");
+
+  const handleOpen = (type:string) => {
+    setOpen(true);
+    setType(type);
+  }
+
+  const handleClose = () => setOpen(false);
 
   const demoDesc = `
 Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
@@ -13,6 +26,8 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
 
   return (
     <>
+      {/* Modal */}
+      <Modal open={open} close={handleClose} type={type} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -27,7 +42,7 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
         {/* Form Container */}
         <p className={styles.description}>{demoDesc}</p>
         <form className={styles.componentsContainer} action="#">
-          <button className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          <button onClick={() => handleOpen("addSection")} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
         </form>
       </main>
       <footer>
