@@ -10,13 +10,17 @@ const Template1 = () => {
 
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("");
+  const [content, setContent] = useState({});
 
   const handleOpen = (type:string) => {
     setOpen(true);
     setType(type);
   }
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false)
+    // setContent(content => content.)
+  };
 
   const demoDesc = `
 Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
