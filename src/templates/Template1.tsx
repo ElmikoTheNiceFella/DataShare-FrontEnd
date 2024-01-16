@@ -10,7 +10,11 @@ const Template1 = () => {
 
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("");
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState<{sections: {[key:string]:any}[]}>({
+    sections: []
+  });
+
+  /* Modal Functions */
 
   const handleOpen = (type:string) => {
     setOpen(true);
@@ -22,6 +26,14 @@ const Template1 = () => {
     // setContent(content => content.)
   };
 
+  // Content Manipulation
+
+  /* Add Section */
+
+  const handlAddSection = (data) => {
+
+  }
+
   const demoDesc = `
 Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
 It's your chance to represent your country, showcase your culture and make awesome memories in the process!
@@ -31,7 +43,7 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
   return (
     <>
       {/* Modal */}
-      <Modal open={open} close={handleClose} type={type} />
+      <Modal open={open} close={handleClose} handleChanges={setContent} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
