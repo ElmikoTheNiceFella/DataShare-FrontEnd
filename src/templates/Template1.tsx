@@ -38,10 +38,10 @@ const Template1 = () => {
   }, [setContent])
 
   const demoDesc = `
-Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
+Hello Students, Get ready for something epic – Festival, happening on X DATE!
 It's your chance to represent your country, showcase your culture and make awesome memories in the process!
 Whether you're a performer, leader, or volunteer, we've got a spot for you.
-    Let's make Festival of Cultures 2024 legendary together!`
+Let's make this festival legendary together!`
 
   return (
     <>
