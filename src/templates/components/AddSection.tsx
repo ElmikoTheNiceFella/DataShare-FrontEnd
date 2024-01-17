@@ -12,7 +12,7 @@ const AddSection = ({close, handleSubmit}:AddSectionProps) => {
 
   return (
     <form onSubmit={handleSubmit('Add Section')}>
-      <button onClick={close} className={styles.close}>
+      <button type='button' onClick={close} className={styles.close}>
         <FontAwesomeIcon icon={faXmark} />
       </button>
       {/* Name */}
@@ -22,7 +22,7 @@ const AddSection = ({close, handleSubmit}:AddSectionProps) => {
         <input type='text' name='new-section' className={styles.modalTextInput} id='new-section-input' />
         <label className={styles.modalInputPlaceholder} htmlFor='new-section-input'>Section Name</label>
       </div>
-      <button type='submit' className={styles.submit}>Save Changes</button>
+      <button type='submit' onClick={close} className={styles.submit}>Save Changes</button>
     </form>
   )
 }

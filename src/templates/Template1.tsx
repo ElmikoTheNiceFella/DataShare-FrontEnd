@@ -30,11 +30,12 @@ const Template1 = () => {
 
   const handleAddSection = useCallback((sectionName:string) => {
     console.log(content);
-    setContent((prev:any) => 
-      prev.sections = [...prev.sections, [sectionName, prev.sections.length, {}]]
-    )
+    setContent((prev: any) => ({
+      ...prev,
+      sections: [...prev.sections, [sectionName, prev.sections.length, {}]],
+    }));
     console.log(content)
-  }, [content])
+  }, [setContent])
 
   const demoDesc = `
 Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
@@ -45,7 +46,10 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
   return (
     <>
       {/* Modal */}
-      <Modal open={open} close={handleClose} addSection={handleAddSection} />
+      <Modal 
+        open={open} 
+        close={handleClose} 
+        addSection={handleAddSection} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -60,9 +64,11 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
         {/* Form Container */}
         <p className={styles.description}>{demoDesc}</p>
         <form className={styles.componentsContainer} action="#">
-          {content.sections?.map((section:any) => {
-            <p>{section[0]}</p>
-          })}
+          {content.sections?.map((section:any) => 
+            <section className={styles.section} key={section[1]}>
+              <h2>{section[0]}</h2>
+            </section>
+          )}
           <button onClick={() => handleOpen()} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
         </form>
       </main>
