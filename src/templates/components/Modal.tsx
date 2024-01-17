@@ -4,24 +4,32 @@ import { AddSection } from '.'
 type ModalProps = {
   open: boolean;
   close: () => void;
-  handleChanges: () => void;
+  addSection: (sectionName: string) => void;
 }
 
 type HandleData = (type: string, data: FormDataEntryValue) => void;
 
-const Modal = ({open, close, handleChanges}:ModalProps) => {
+const Modal = ({open, close, addSection}:ModalProps) => {
 
-  // Processes Data According To The Type Of Modifications We Got
-  const handleData:HandleData = (type, data) => {
+  const handleSubmit = (type:string) => (e:React.SyntheticEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+
     switch(type) {
-      // Adding Section
       case "Add Section":
-        // Adding Section To The Form Content
-        handleAddSection(data)
+        // Get Section Name
+        let name;
+        for(let [_,value] of data.entries()) {
+          name = value as string;
+        }
+        // Call the function to add section name
+        addSection(name!);
         break;
       default:
         break;
     }
+
   }
 
   // const handleChange = () => changeContent(type, )
@@ -38,7 +46,7 @@ const Modal = ({open, close, handleChanges}:ModalProps) => {
       <div style={{
         opacity: open ? 1 : 0
       }} onClick={e => e.stopPropagation()} className={styles.modal}>
-        <AddSection close={close} handleData={handleData} />
+        <AddSection close={close} handleSubmit={handleSubmit} />
       </div>
     </div>
   )

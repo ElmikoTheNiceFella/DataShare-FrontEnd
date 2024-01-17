@@ -5,27 +5,13 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 type AddSectionProps = {
   close: () => void;
-  handleData: (type: string, data: {}) => void;
+  handleSubmit: (type: string) => (e: React.SyntheticEvent) => void;
 }
 
-const AddSection = ({close, handleData}:AddSectionProps) => {
-
-  const handleSubmit = (e:React.SyntheticEvent) => {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const data = new FormData(form);
-    
-    let result: { [key: string]:  {}} = {};
-
-    for (let [_, value] of data.entries()) {
-      result[value as string] = {};
-    }
-
-    handleData('Add Section', result)
-  }
+const AddSection = ({close, handleSubmit}:AddSectionProps) => {
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit('Add Section')}>
       <button onClick={close} className={styles.close}>
         <FontAwesomeIcon icon={faXmark} />
       </button>

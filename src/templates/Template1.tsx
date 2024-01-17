@@ -4,21 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 // Components
 import { Modal } from './components';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const Template1 = () => {
 
   const [open, setOpen] = useState(false);
-  const [type, setType] = useState("");
-  const [content, setContent] = useState<{sections: {[key:string]:any}[]}>({
+  const [content, setContent] = useState<any>({
     sections: []
   });
 
   /* Modal Functions */
 
-  const handleOpen = (type:string) => {
+  const handleOpen = () => {
     setOpen(true);
-    setType(type);
   }
 
   const handleClose = () => {
@@ -30,9 +28,13 @@ const Template1 = () => {
 
   /* Add Section */
 
-  const handlAddSection = (data) => {
-
-  }
+  const handleAddSection = useCallback((sectionName:string) => {
+    console.log(content);
+    setContent((prev:any) => 
+      prev.sections = [...prev.sections, [sectionName, prev.sections.length, {}]]
+    )
+    console.log(content)
+  }, [content])
 
   const demoDesc = `
 Hello UDST Students, Get ready for something epic – Festival of Cultures, happening on March 7 & 8, 2024!
@@ -43,7 +45,7 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
   return (
     <>
       {/* Modal */}
-      <Modal open={open} close={handleClose} handleChanges={setContent} />
+      <Modal open={open} close={handleClose} addSection={handleAddSection} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -58,7 +60,10 @@ Whether you're a performer, leader, or volunteer, we've got a spot for you.
         {/* Form Container */}
         <p className={styles.description}>{demoDesc}</p>
         <form className={styles.componentsContainer} action="#">
-          <button onClick={() => handleOpen("addSection")} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          {content.sections?.map((section:any) => {
+            <p>{section[0]}</p>
+          })}
+          <button onClick={() => handleOpen()} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
         </form>
       </main>
       <footer>
