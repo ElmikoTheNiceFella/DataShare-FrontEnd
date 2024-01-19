@@ -1,5 +1,6 @@
 import styles from '../../styles/modules/modal.module.scss'
-import { useMemo } from 'react'
+import localStyles from '../../styles/modules/addSection.module.scss'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
@@ -10,6 +11,8 @@ type AddSectionProps = {
 
 const AddSection = ({close, handleSubmit}:AddSectionProps) => {
 
+  const [input, setInput] = useState("")
+
   return (
     <form onSubmit={handleSubmit('Add Section')}>
       <button type='button' onClick={close} className={styles.close}>
@@ -18,11 +21,11 @@ const AddSection = ({close, handleSubmit}:AddSectionProps) => {
       {/* Name */}
       <h2>Add Section</h2>
       {/* Properties */}
-      <div className={styles.inputContainer}>
-        <input type='text' name='new-section' className={styles.modalTextInput} id='new-section-input' />
-        <label className={styles.modalInputPlaceholder} htmlFor='new-section-input'>Section Name</label>
+      <div className={localStyles.inputContainer}>
+        <input value={input} onChange={e => setInput(e.target.value)} required type='text' name='new-section' className={localStyles.modalTextInput} id='new-section-input' />
+        <label className={localStyles.modalInputPlaceholder} htmlFor='new-section-input'>Section Name</label>
       </div>
-      <button type='submit' onClick={close} className={styles.submit}>Save Changes</button>
+      <button type='submit' disabled={!input} className={styles.submit}>Save Changes</button>
     </form>
   )
 }

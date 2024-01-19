@@ -1,18 +1,20 @@
 import styles from '../../styles/modules/modal.module.scss'
-import { AddSection } from '.'
+import { AddSection, RemoveSection } from '.'
 
 type ModalProps = {
-  open: boolean;
+  open: string[];
   close: () => void;
   addSection: (sectionName: string) => void;
+  removeSection: (id: number) => void;
 }
 
-type HandleData = (type: string, data: FormDataEntryValue) => void;
+// type HandleData = (type: string, data: FormDataEntryValue) => void;
 
-const Modal = ({open, close, addSection}:ModalProps) => {
+const Modal = ({open, close, addSection, removeSection}:ModalProps) => {
 
   const handleSubmit = (type:string) => (e:React.SyntheticEvent) => {
     e.preventDefault();
+    close();
     const form = e.target as HTMLFormElement;
     const data = new FormData(form);
 
@@ -37,16 +39,17 @@ const Modal = ({open, close, addSection}:ModalProps) => {
   return (
     <div
       style={{
-        visibility: open ? "visible" : "hidden",
-        backgroundColor: `rgba(0,0,0,${open ? 0.5 : 0})`,
+        visibility: open[0] ? "visible" : "hidden",
+        backgroundColor: `rgba(0,0,0,${open[0] ? 0.5 : 0})`,
         transition: "0.1s ease-out"
       }} 
       onClick={close}
       className={styles.modalContainer}>
       <div style={{
-        opacity: open ? 1 : 0
+        opacity: open[0] ? 1 : 0
       }} onClick={e => e.stopPropagation()} className={styles.modal}>
-        <AddSection close={close} handleSubmit={handleSubmit} />
+        {open[0] == "AddSection" && <AddSection close={close} handleSubmit={handleSubmit} />}
+        {open[0] == "RemoveSection" && <RemoveSection close={close} sectionName={open[1]} sectionID={+open[2]} handleRemove={removeSection} />}
       </div>
     </div>
   )

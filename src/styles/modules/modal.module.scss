@@ -14,6 +14,9 @@ $BORDER: 2px;
     padding: 40px 60px;
     background-color: white;
     position: relative;
+    h2 {
+      margin-bottom: 40px;
+    }
     .close {
       all: unset;
       cursor: pointer;
@@ -28,41 +31,7 @@ $BORDER: 2px;
       font-size: large;
       color: rgba($color: $BLACK, $alpha: 0.6);
     }
-    .inputContainer {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-    h2 {
-      margin-bottom: 40px;
-    }
-    .modalTextInput {
-      all: unset;
-      height: 50px;
-      padding: 0px 20px;
-      border: $BORDER solid $BLUE;
-      width: calc(100% - 44px);
-      position: absolute;
-      font-size: large;
-      &:focus + .modalInputPlaceholder {
-        color: $BLUE;
-        left: 10px;
-        top: -25px;
-        font-size: 16px;
-      }
-    }
-    .modalInputPlaceholder {
-      position: relative;
-      top: -$BORDER;
-      background-color: white;
-      color: rgba($color: $BLUE, $alpha: 0.5);
-      left: 15px;
-      font-size: 20px;
-      height: 22px;
-      padding: 0px 5px;
-      transition: 0.1s ease-out;
-      pointer-events: none;
-    }
+    
   }
   .submit {
     all: unset;
@@ -74,5 +43,8 @@ $BORDER: 2px;
     text-align: center;
     height: 50px;
     cursor: pointer;
+    &:disabled {
+      background-color: rgba($color: $BLUE, $alpha: 0.5);
+    }
   }
 }

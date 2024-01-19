@@ -1,0 +1,22 @@
+@import '../variables';
+
+.buttonsContainer {
+  display: flex;
+  gap: 12px;
+}
+.yes, .no {
+  all: unset;
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.yes {
+  color: white;
+  background-color: $RED;
+}
+.no {
+  background-color: $GRAY;
+  color: $BLACK;
+}
