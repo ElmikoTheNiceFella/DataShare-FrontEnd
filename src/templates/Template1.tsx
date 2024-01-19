@@ -6,6 +6,8 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from './components';
 import { useCallback, useState } from 'react';
 
+type InputType = { [key: string]: FormDataEntryValue };
+
 const Template1 = () => {
 
   const [open, setOpen] = useState([""]);
@@ -15,7 +17,7 @@ const Template1 = () => {
 
   /* Modal Functions */
 
-  const handleOpen = (type:string[]) => {
+  const handleOpen = (type:any[]) => {
     setOpen(type);
   }
 
@@ -31,7 +33,7 @@ const Template1 = () => {
   const handleAddSection = useCallback((sectionName:string) => {
     setContent((prev: any) => ({
       ...prev,
-      sections: [...prev.sections, [sectionName, prev.sections.length, {}]],
+      sections: [...prev.sections, [sectionName, prev.sections.length, []]],
     }));
   }, [setContent])
 
@@ -39,8 +41,29 @@ const Template1 = () => {
   const handleRemoveSection = useCallback((sectionID:number) => {
     setContent((prev:any) => ({
       ...prev,
-      sections: [...prev.sections.filter((s:any[]) => !s.includes(sectionID))]
+      sections: [...prev.sections.filter((s:any[]) => s[1] != sectionID)]
     }))
+  }, [setContent])
+
+  /* Add Text Input */
+  const handleAddText = useCallback((inputData:InputType, sectionID:number) => {
+    console.log(
+      inputData,
+      sectionID,
+      content
+    )
+    setContent((prev:any) => {
+      // Copy Previous Element
+      let copy = JSON.parse(JSON.stringify(prev));
+      // Find the Section ID
+      for(let i = 0; i < copy.sections.length; i++) {
+        if (copy.sections[i][1] == sectionID) {
+          // Add The Text Input To That Section
+          copy.sections[i][2] = [...copy.sections[i][2], ["textInput", inputData]]
+        }
+      }
+      return copy;
+    })
   }, [setContent])
 
   const demoDesc = `
@@ -56,7 +79,8 @@ Let's make this festival legendary together!`
         open={open} 
         close={handleClose} 
         addSection={handleAddSection}
-        removeSection={handleRemoveSection} />
+        removeSection={handleRemoveSection}
+        addText={handleAddText} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -79,6 +103,19 @@ Let's make this festival legendary together!`
                   <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
                 </button>
               </div>
+              <div className={styles.inputsContainer}>
+                {section[2].map((component:any) => {
+                  {
+                    component[0] == "textInput" &&
+                    <>
+                      <p>{component[1].inputTitle}</p>
+                      <p>{component[1].inputPlaceholder}</p>
+                      <p>{component[1].isRequired}</p>
+                    </>
+                  }
+                })}
+              </div>
+              <button onClick={() => handleOpen(["AddComponent", section[1]])} className={styles.addComponent}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Component</button>
             </section>
           )}
           <button onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
