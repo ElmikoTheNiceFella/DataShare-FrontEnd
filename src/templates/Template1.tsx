@@ -150,12 +150,13 @@ Let's make this festival legendary together!`
                               color: "red"
                             }}>*</span>}
                           </label>
+                          <button onClick={() => handleOpen(["RemoveComponent", component[0], i, section[1]])} className={styles.removeSection}>
+                            <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+                          </button>
                           <input type="text" id={`text-input-${i + 1}`} placeholder={component[1].inputPlaceholder} />
                         </div>
                       }
-                    <button onClick={() => handleOpen(["RemoveComponent", component[0], i, section[1]])} className={styles.removeSection}>
-                      <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
-                    </button>
+                    
                     </div>
                 )}
               </div>

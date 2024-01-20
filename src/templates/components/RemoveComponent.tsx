@@ -6,7 +6,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 const RemoveComponent = ({componentType, sectionID, componentID, handleRemove, close}:RemoveComponentProps) => {
   
   const camelCaseToNormal = (type:string) => {
-    
     let newType:string = type[0].toUpperCase()
 
     for(let i = 1; i < type.length; i++) {
