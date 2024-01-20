@@ -4,11 +4,6 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-type AddSectionProps = {
-  close: () => void;
-  handleSubmit: (type: string) => (e: React.SyntheticEvent) => void;
-}
-
 const AddSection = ({close, handleSubmit}:AddSectionProps) => {
 
   const [input, setInput] = useState("")

@@ -3,20 +3,9 @@ import styles from '../../styles/modules/modal.module.scss'
 // Hooks
 import { useState } from 'react';
 // Modal Components
-import { AddSection, RemoveSection, AddComponent, TextEdit } from '.'
+import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit } from '.'
 
-// Types
-type ModalProps = {
-  open: string[];
-  close: () => void;
-  addSection: (sectionName: string) => void;
-  removeSection: (id: number) => void;
-  addText: (inputData: InputType, sectionID: number) => void;
-}
-type InputType = { [key: string]: FormDataEntryValue };
-type HandleSubmitArgs = string | [string, number];
-
-const Modal = ({ open, close, addSection, removeSection, addText }: ModalProps) => {
+const Modal = ({ open, close, addSection, removeSection, removeComponent ,addText }: ModalProps) => {
 
   /* --------------------------------------------------------- */
   /* Adding Changes And Calling Content Manipulation Functions */
@@ -92,6 +81,8 @@ const Modal = ({ open, close, addSection, removeSection, addText }: ModalProps) 
         {open[0] == "RemoveSection" && <RemoveSection close={close} sectionName={open[1]} sectionID={+open[2]} handleRemove={removeSection} />}
         {/* Select Component to Add */}
         {open[0] == "AddComponent" && Component == "" && <AddComponent setComponent={handleComponent} />}
+        {/* Remove Component */}
+        {open[0] == "RemoveComponent" && <RemoveComponent close={close} handleRemove={removeComponent} sectionID={+open[3]} componentType={open[1]} componentID={+open[2]} />}
         {/* Add Text Input Component */}
         {open[0] == "AddComponent" && Component != "" && <Component sectionID={+open[1]} handleSubmit={handleSubmit} back={handleComponent} />}
       </div>

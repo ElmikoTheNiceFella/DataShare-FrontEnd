@@ -7,10 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 // Components
 import { Modal } from './components';
-import { useCallback, useState, useEffect } from 'react';
-
-// Types
-type InputType = { [key: string]: FormDataEntryValue };
+import { useState } from 'react';
 
 const Template1 = () => {
 
@@ -43,37 +40,56 @@ const Template1 = () => {
   /* -------------------- */
 
   // Add New Section
-  const handleAddSection = useCallback((sectionName:string) => {
+  const handleAddSection = (sectionName:string) => {
     setContent((prev: any) => ({
       ...prev,
       sections: [...prev.sections, [sectionName, prev.sections.length, []]],
     }));
-  }, [content])
+  }
 
   // Remove Section By Section ID
-  const handleRemoveSection = useCallback((sectionID:number) => {
+  const handleRemoveSection = (sectionID:number) => {
     setContent((prev:any) => ({
       ...prev,
       sections: [...prev.sections.filter((s:any[]) => s[1] != sectionID)]
     }))
-  }, [content])
+  }
+
+  // Remove Component
+  const handleRemoveComponent = (sectionID:number ,componentID:number) => {
+    setContent((prev:any) => {
+      // Deep Copy The Content Object
+      let copy = JSON.parse(JSON.stringify(prev))
+      // Traverse And Find The Section
+      for (let i = 0; i < copy.sections.length; i++) {
+        if (copy.sections[i][1] == sectionID) {
+          // Remove The Component From The Section
+          copy.sections[i][2].splice(componentID, 1)
+          break;
+        }
+      }
+      // Return The New Object
+      return copy
+    })
+  }
 
   // Add Text Input Component
-  const handleAddText = useCallback((inputData:InputType, sectionID:number) => {
+  const handleAddText = (inputData:InputType, sectionID:number) => {
     setContent((prev:any) => {
-      // Copy Previous Content
+      // Deep Copy The Content Object
       let copy = JSON.parse(JSON.stringify(prev));
       // Find the Section By Its ID
       for(let i = 0; i < copy.sections.length; i++) {
         if (copy.sections[i][1] == sectionID) {
           // Add The Text Input To That Section
           copy.sections[i][2] = [...copy.sections[i][2], ["textInput", inputData]]
+          break;
         }
       }
       // Return The New Object
       return copy;
     })
-  }, [content])
+  }
 
   /* --------- */
   /* DEMO DATA */
@@ -93,6 +109,7 @@ Let's make this festival legendary together!`
         close={handleClose} 
         addSection={handleAddSection}
         removeSection={handleRemoveSection}
+        removeComponent={handleRemoveComponent}
         addText={handleAddText} />
       <header className={styles.header}>
         {/* LOGO */}
@@ -123,19 +140,23 @@ Let's make this festival legendary together!`
               <div className={styles.inputsContainer}>
                 {/* Rendering Components */}
                 {section[2].map((component:any, i:number) => 
-                    <>
+                    <div className={styles.inputContainer}>
                     {/* Text Input Field */}
                       {component[0] == "textInput" &&
-                      <div className={styles.textInputContainer}>
-                        <label htmlFor={`${i}`}>{component[1].inputTitle}
-                        <span style={{ 
-                          color: "red",
-                          display: component[1].isRequired == "on" ? "inline" : "none" }}>*</span>
-                        </label>
-                        <input type="text" placeholder={component[1].inputPlaceholder} />
-                      </div>
+                        <div className={textStyles.inputContainer}>
+                          <label htmlFor={`text-input-${i+1}`}>{component[1].inputTitle}
+                          {component[1].isRequired && 
+                            <span style={{
+                              color: "red"
+                            }}>*</span>}
+                          </label>
+                          <input type="text" id={`text-input-${i + 1}`} placeholder={component[1].inputPlaceholder} />
+                        </div>
                       }
-                    </>
+                    <button onClick={() => handleOpen(["RemoveComponent", component[0], i, section[1]])} className={styles.removeSection}>
+                      <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+                    </button>
+                    </div>
                 )}
               </div>
               <button onClick={() => handleOpen(["AddComponent", section[1]])} className={styles.addComponent}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Component</button>
@@ -144,7 +165,7 @@ Let's make this festival legendary together!`
           {/* Adding Section */}
           <button onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           {/* DEBUG BUTTON (IGNORE) */}
-          <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button>
+          {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>
       </main>
       <footer>

@@ -17,19 +17,19 @@
 
 // }
 
-const newObj = {helo: "World"}
+// const newObj = {helo: "World"}
 
-const myObj = {
-  sections: [["sect", 1, {}], ["se3t", 2, {}]]
-}
+// const myObj = {
+//   sections: [["sect", 1, {}], ["se3t", 2, {}]]
+// }
 
-for(let i = 0; i < myObj.sections.length; i++) {
-  if (myObj.sections[i][1] == 2) {
-    myObj.sections[i][2] = {
-      ...myObj.sections[i][2],
-      helo: newObj.helo
-    }
-  }
-}
+// for(let i = 0; i < myObj.sections.length; i++) {
+//   if (myObj.sections[i][1] == 2) {
+//     myObj.sections[i][2] = {
+//       ...myObj.sections[i][2],
+//       helo: newObj.helo
+//     }
+//   }
+// }
 
-console.log(myObj);
+// console.log(myObj);

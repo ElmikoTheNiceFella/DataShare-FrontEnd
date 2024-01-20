@@ -1,9 +1,5 @@
 import localStyles from '../../styles/modules/addComponent.module.scss'
 
-type AddComponentProps = {
-  setComponent: (component:string) => void;
-}
-
 const AddComponent = ({ setComponent }:AddComponentProps) => {
 
   return (

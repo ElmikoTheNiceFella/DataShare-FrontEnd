@@ -62,6 +62,11 @@
         cursor: pointer;
       }
     }
+    .inputsContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
   }
   // Add Section Button
   .addSection, .addComponent {
@@ -87,6 +92,8 @@
   .addComponent {
     width: 25%;
     height: 50px;
+    margin-left: 20px;
     font-size: large;
+    margin-top: 20px;
   }
 }

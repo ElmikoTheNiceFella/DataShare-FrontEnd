@@ -10,14 +10,6 @@ export const Text = () => {
 }
 
 // Editing The Text Element
-type HandleSubmitArgs = string|[string, number];
-
-type TextEditProps = {
-  back: (el:string) => void;
-  sectionID: number;
-  handleSubmit: (type:HandleSubmitArgs) => (e:React.SyntheticEvent) => void;
-}
-
 export const TextEdit = ({back, sectionID, handleSubmit}:TextEditProps) => {
   return (
     <form onSubmit={handleSubmit(["Add Text", sectionID])}>
