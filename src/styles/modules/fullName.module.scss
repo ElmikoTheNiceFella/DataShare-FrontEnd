@@ -1,0 +1,118 @@
+@import '../variables';
+@import '../mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  button {
+    all: unset;
+    font-weight: bolder;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgba($color: $BLACK, $alpha: 0.75);
+    padding: 8px;
+    cursor: pointer;
+  }
+}
+.inputsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  input {
+    all: unset;
+    display: block;
+  }
+  div {
+    :nth-child(1) {
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      font-size: 18px;
+      width: 100%;
+      font-weight: bold;
+      color: $BLACK;
+      border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.25);
+      &::placeholder {
+        color: $BLACK;
+      }
+    }
+    :nth-child(2) {
+      border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+      height: 50px;
+      color: rgba($color: $BLACK, $alpha: 0.75);
+      @include padding-x(20px);
+      width: calc(100% - 46px);
+      &::placeholder {
+        color: rgba($color: $BLACK, $alpha: 0.75);
+      }
+    }
+  }
+}
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+input[type="checkbox"]:checked + .isRequired::before {
+  background-color: $BLUE;
+}
+.isRequired {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  width: 40%;
+  &:hover {
+    &::before {
+      background-color: $GRAY;
+    }
+  }
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    transition: 0.1s ease-out;
+  }
+}
+.addComponent {
+  all: unset;
+  font-weight: 600;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  background-color: $BLUE;
+  color: white;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+// Text Show
+.inputContainer {
+  margin-top: 12px;
+  @include padding-x(20px);
+  label, span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  input {
+    all: unset;
+    width: 100%;
+    height: 50px;
+    padding-left: 16px;
+    padding-right: 12px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+  }
+  button {
+    all: unset;
+    float: right;
+    padding: 0px 8px 8px 8px;
+    cursor: pointer;
+  }
+}

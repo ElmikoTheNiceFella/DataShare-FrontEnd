@@ -8,4 +8,5 @@ export { default as AddComponent } from './AddComponent'
 export { default as RemoveComponent } from './RemoveComponent'
 
 // Minor Components
-export { Text, TextEdit } from './Text'
+export { TextEdit } from './Text'
+export { FullNameEdit } from './FullName'

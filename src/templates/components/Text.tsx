@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 // Actual Text Element
-export const Text = () => {
-  return (
-    <></>
-  )
-}
+// export const Text = () => {
+//   return (
+//     <></>
+//   )
+// }
 
 // Editing The Text Element
 export const TextEdit = ({back, sectionID, handleSubmit}:TextEditProps) => {
