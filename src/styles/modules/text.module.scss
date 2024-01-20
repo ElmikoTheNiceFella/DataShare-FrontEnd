@@ -1,5 +1,6 @@
 @import '../variables';
 @import '../mixins';
+
 // Text Edit
 .header {
   display: flex;
@@ -87,3 +88,5 @@ input[type="checkbox"]:checked + .isRequired::before {
   gap: 12px;
   cursor: pointer;
 }
+
+// Text Show
