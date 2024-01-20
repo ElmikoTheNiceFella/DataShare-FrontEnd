@@ -9,8 +9,9 @@ type ModalProps = {
   removeSection: (id: number) => void;
   removeComponent: (sectionID: number, componentID: number) => void;
   addText: (inputData: InputType, sectionID: number) => void;
+  addFullName: (inputData: InputType, sectionID: number) => void;
 }
-type HandleSubmitArgs = string | [string, number];
+type HandleSubmitArgs = string | [string, number] | [string, number, {[key:string]:(string|boolean)}];
 
 // Add Components
 type AddComponentProps = {

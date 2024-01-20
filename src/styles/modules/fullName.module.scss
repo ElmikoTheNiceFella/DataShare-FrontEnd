@@ -93,7 +93,7 @@ input[type="checkbox"]:checked + .isRequired::before {
   cursor: pointer;
 }
 
-// Text Show
+// FullName Show
 .inputContainer {
   margin-top: 12px;
   @include padding-x(20px);
@@ -114,5 +114,8 @@ input[type="checkbox"]:checked + .isRequired::before {
     float: right;
     padding: 0px 8px 8px 8px;
     cursor: pointer;
+  }
+  :nth-child(2) > label {
+    padding-bottom: 8px;
   }
 }

@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Modal Components
 import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit } from '.'
 
-const Modal = ({ open, close, addSection, removeSection, removeComponent ,addText }: ModalProps) => {
+const Modal = ({ open, close, addSection, removeSection, removeComponent ,addText, addFullName }: ModalProps) => {
 
   /* --------------------------------------------------------- */
   /* Adding Changes And Calling Content Manipulation Functions */
@@ -33,13 +33,17 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent ,addTex
         addSection(name!);
         break;
       case "Add Text":
-        let inputData: InputType = {};
+        let textInputData: InputType = {};
         for (let [key, value] of data.entries()) {
-          inputData[key] = value;
+          textInputData[key] = value;
         }
-        addText(inputData, +type[1])
+        addText(textInputData, +type[1])
+        break;
+      case "Add FullName":
+        addFullName(type[2] as {[key:string]:string}, +type[1])
         break;
       default:
+        console.log("Submission Data Error")
         break;
     }
   }

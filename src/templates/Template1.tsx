@@ -1,7 +1,7 @@
 // Styles
 import styles from '../styles/modules/template1.module.scss'
 // Component Styles
-import { textStyles } from '../styles/modules';
+import { textStyles, fullNameStyles } from '../styles/modules';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -91,6 +91,24 @@ const Template1 = () => {
     })
   }
 
+  const handleAddFullName = (inputData: InputType, sectionID: number) => {
+    console.log(inputData)
+    setContent((prev: any) => {
+      // Deep Copy The Content Object
+      let copy = JSON.parse(JSON.stringify(prev));
+      // Find the Section By Its ID
+      for (let i = 0; i < copy.sections.length; i++) {
+        if (copy.sections[i][1] == sectionID) {
+          // Add The Text Input To That Section
+          copy.sections[i][2] = [...copy.sections[i][2], ["fullNameInput", inputData]]
+          break;
+        }
+      }
+      // Return The New Object
+      return copy;
+    })
+  }
+
   /* --------- */
   /* DEMO DATA */
   /* --------- */
@@ -110,7 +128,8 @@ Let's make this festival legendary together!`
         addSection={handleAddSection}
         removeSection={handleRemoveSection}
         removeComponent={handleRemoveComponent}
-        addText={handleAddText} />
+        addText={handleAddText}
+        addFullName={handleAddFullName} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -156,7 +175,31 @@ Let's make this festival legendary together!`
                           <input type="text" id={`text-input-${i + 1}`} placeholder={component[1].inputPlaceholder} />
                         </div>
                       }
-                    
+                      {component[0] == "fullNameInput" &&
+                        <div className={fullNameStyles.inputContainer}>
+                          <div>
+                            <label htmlFor={`first-name-input-${i + 1}`}>{component[1].firstNameTitle}
+                              {component[1].isRequired &&
+                                <span style={{
+                                  color: "red"
+                                }}>*</span>}
+                            </label>
+                            <button onClick={() => handleOpen(["RemoveComponent", component[0], i, section[1]])} className={styles.removeSection}>
+                              <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+                            </button>
+                            <input type="text" id={`first-name-input-${i + 1}`} placeholder={component[1].firstNamePH} />
+                          </div>
+                          <div>
+                            <label htmlFor={`last-name-input-${i + 1}`}>{component[1].lastNameTitle}
+                              {component[1].isRequired &&
+                                <span style={{
+                                  color: "red"
+                                }}>*</span>}
+                            </label>
+                            <input type="text" id={`last-name-input-${i + 1}`} placeholder={component[1].lastNamePH} />
+                          </div>
+                        </div>
+                      }
                     </div>
                 )}
               </div>
