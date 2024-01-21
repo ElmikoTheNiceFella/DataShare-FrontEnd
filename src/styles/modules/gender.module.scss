@@ -1,0 +1,17 @@
+@import '../variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  button {
+    all: unset;
+    font-weight: bolder;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgba($color: $BLACK, $alpha: 0.75);
+    padding: 8px;
+    cursor: pointer;
+  }
+}

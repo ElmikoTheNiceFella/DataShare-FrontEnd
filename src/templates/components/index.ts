@@ -10,3 +10,4 @@ export { default as RemoveComponent } from './RemoveComponent'
 // Minor Components
 export { TextEdit } from './Text'
 export { FullNameEdit } from './FullName'
+export { GenderEdit } from './Gender'

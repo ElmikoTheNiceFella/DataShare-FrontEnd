@@ -10,7 +10,6 @@ $BORDER: 2px;
   justify-content: center;
   align-items: center;
   .modal {
-    width: 30%;
     padding: 40px 60px;
     background-color: white;
     position: relative;
@@ -39,7 +38,7 @@ $BORDER: 2px;
     color: white;
     font-size: large;
     margin-top: 50px;
-    width: calc(100%);
+    width: 100%;
     text-align: center;
     height: 50px;
     cursor: pointer;

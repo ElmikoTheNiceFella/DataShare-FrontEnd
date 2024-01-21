@@ -1,6 +1,13 @@
 @import '../variables';
 @import '../mixins';
 
+// Parent Container
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
 // Component Container
 .componentContainer {
   padding: 20px;
@@ -16,8 +23,8 @@
     background-color: rgba($color: $BLACK, $alpha: 0.05);
   }
 }
-// Text Input
 
+// Text Input
 .text {
   background-color: $GRAY;
   height: 100px;
@@ -38,7 +45,6 @@
 }
 
 // Full Name Input
-
 .fullName {
   background-color: $GRAY;
   height: 100px;
@@ -56,5 +62,38 @@
     font-weight: bolder;
     color: rgba($color: $BLACK, $alpha: 0.5);
     @include padding-x(20px);
+  }
+}
+
+// Gender Input
+.gender {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  .genderChoice {
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    margin-left: -14px;
+  }
+  .male {
+    background-color: $BLUE;
+  }
+  .female {
+    background-color: $PINK;
+  }
+  div {
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    svg {
+      scale: 1.3;
+    }
   }
 }

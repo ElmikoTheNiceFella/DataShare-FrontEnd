@@ -1,3 +1,9 @@
+// SVG Export Fix
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}
+
 /* Template1 Types */
 type InputType = { [key: string]: FormDataEntryValue };
 
