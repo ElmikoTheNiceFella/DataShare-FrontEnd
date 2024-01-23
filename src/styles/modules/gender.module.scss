@@ -1,5 +1,6 @@
 @import '../variables';
 
+// Input Edit
 .header {
   display: flex;
   justify-content: space-between;
@@ -14,4 +15,60 @@
     padding: 8px;
     cursor: pointer;
   }
+}
+.inputsContainer {
+  display: flex;
+  gap: 20px;
+}
+.male, .female {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 999px;
+    margin-right: 20px;
+  }
+  input {
+    all: unset;
+    border-bottom: 1px solid white;
+    color: white;
+    margin-left: 15px;
+    width: 75px;
+    font-size: 20px;
+  }
+  svg {
+    scale: 1.5;
+  }
+}
+.male {
+  background-color: $BLUE;
+}
+.female {
+  background-color: $PINK;
+}
+.addComponent {
+  all: unset;
+  font-weight: 600;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  background-color: $BLUE;
+  color: white;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+// Input Show
+.title {
+  font-weight: bold;
+  font-size: 18px;
 }

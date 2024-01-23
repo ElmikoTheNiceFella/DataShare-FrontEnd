@@ -1,7 +1,7 @@
 // Styles
 import styles from '../styles/modules/template1.module.scss'
 // Component Styles
-import { textStyles, fullNameStyles } from '../styles/modules';
+import { textStyles, fullNameStyles, genderStyles } from '../styles/modules';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -92,15 +92,31 @@ const Template1 = () => {
   }
 
   const handleAddFullName = (inputData: InputType, sectionID: number) => {
-    console.log(inputData)
     setContent((prev: any) => {
       // Deep Copy The Content Object
       let copy = JSON.parse(JSON.stringify(prev));
       // Find the Section By Its ID
       for (let i = 0; i < copy.sections.length; i++) {
         if (copy.sections[i][1] == sectionID) {
-          // Add The Text Input To That Section
+          // Add The Full Name Input To That Section
           copy.sections[i][2] = [...copy.sections[i][2], ["fullNameInput", inputData]]
+          break;
+        }
+      }
+      // Return The New Object
+      return copy;
+    })
+  }
+
+  const handleAddGender = (inputData: InputType, sectionID: number) => {
+    setContent((prev: any) => {
+      // Deep Copy The Content Object
+      let copy = JSON.parse(JSON.stringify(prev));
+      // Find the Section By Its ID
+      for (let i = 0; i < copy.sections.length; i++) {
+        if (copy.sections[i][1] == sectionID) {
+          // Add The Gender Input To That Section
+          copy.sections[i][2] = [...copy.sections[i][2], ["genderInput", inputData]]
           break;
         }
       }
@@ -129,7 +145,8 @@ Let's make this festival legendary together!`
         removeSection={handleRemoveSection}
         removeComponent={handleRemoveComponent}
         addText={handleAddText}
-        addFullName={handleAddFullName} />
+        addFullName={handleAddFullName}
+        addGender={handleAddGender} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -200,6 +217,22 @@ Let's make this festival legendary together!`
                           </div>
                         </div>
                       }
+                      {component[0] == "genderInput" && 
+                      <div className={genderStyles.inputContainer}>
+                        <h3 className={genderStyles.title}>Gender</h3>
+                        <div>
+                          <label htmlFor={`gender-input-male-${i + 1}`}>
+                            {component[1].male}
+                          </label>
+                          <input type="radio" name='gender' />
+                        </div>
+                        <div>
+                          <label htmlFor={`gender-input-female-${i + 1}`}>
+                            {component[1].female}
+                          </label>
+                          <input type="radio" name='gender' />
+                        </div>
+                      </div>}
                     </div>
                 )}
               </div>
