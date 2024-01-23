@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 // Input Edit
 .header {
@@ -68,7 +69,62 @@
 }
 
 // Input Show
+.inputContainer {
+  @include padding-x(20px);
+  .gendersContainer {
+    display: flex;
+    gap: 20px;
+  }
+  .maleInput, .femaleInput {
+    user-select: none;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+    div {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      svg {
+        scale: 1.5;
+      }
+      &::before {
+        left: -30px;
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 2px solid white;
+        border-radius: 99px;
+        background-color: white;
+      }
+    }
+  }
+  .maleInput {
+    background-color: $BLUE;
+    input:checked + div::before {
+      background-color: $BLUE;
+    }
+  }
+  .femaleInput {
+    background-color: $PINK;
+    input:checked + div::before {
+      background-color: $PINK;
+    }
+  }
+}
 .title {
   font-weight: bold;
   font-size: 18px;
+  @include margin-y(12px);
 }

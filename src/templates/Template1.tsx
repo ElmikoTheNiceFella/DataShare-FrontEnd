@@ -5,6 +5,7 @@ import { textStyles, fullNameStyles, genderStyles } from '../styles/modules';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { MaleIcon, FemaleIcon } from '../../public';
 // Components
 import { Modal } from './components';
 import { useState } from 'react';
@@ -220,17 +221,23 @@ Let's make this festival legendary together!`
                       {component[0] == "genderInput" && 
                       <div className={genderStyles.inputContainer}>
                         <h3 className={genderStyles.title}>Gender</h3>
-                        <div>
-                          <label htmlFor={`gender-input-male-${i + 1}`}>
-                            {component[1].male}
+                        <div className={genderStyles.gendersContainer}>
+                          <label htmlFor={`gender-input-male-${i + 1}`} className={genderStyles.maleInput}>
+                            <input type="radio" id={`gender-input-male-${i + 1}`} name='gender' />
+                            <div>
+                              <MaleIcon/>
+                              {component[1].male}
+                            </div>
                           </label>
-                          <input type="radio" name='gender' />
-                        </div>
-                        <div>
-                          <label htmlFor={`gender-input-female-${i + 1}`}>
-                            {component[1].female}
-                          </label>
-                          <input type="radio" name='gender' />
+                          <div className={genderStyles.femaleInput}>
+                            <label htmlFor={`gender-input-female-${i + 1}`}>
+                              <input type="radio" id={`gender-input-female-${i + 1}`} name='gender' />
+                              <div>
+                                <FemaleIcon />
+                                {component[1].female}
+                              </div>
+                            </label>
+                          </div>
                         </div>
                       </div>}
                     </div>
