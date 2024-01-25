@@ -52,6 +52,34 @@
 .female {
   background-color: $PINK;
 }
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+input[type="checkbox"]:checked + .isRequired::before {
+  background-color: $BLUE;
+}
+.isRequired {
+  @include margin-y(20px);
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  width: 40%;
+  &:hover {
+    &::before {
+      background-color: $GRAY;
+    }
+  }
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    transition: 0.1s ease-out;
+  }
+}
 .addComponent {
   all: unset;
   font-weight: 600;
@@ -70,14 +98,20 @@
 
 // Input Show
 .inputContainer {
-  @include padding-x(20px);
+  padding-left: 20px;
+  button {
+    all: unset;
+    float: right;
+    padding: 0px 8px 0px 8px;
+    cursor: pointer;
+  }
   .gendersContainer {
     display: flex;
     gap: 20px;
   }
   .maleInput, .femaleInput {
     user-select: none;
-    width: 50%;
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;

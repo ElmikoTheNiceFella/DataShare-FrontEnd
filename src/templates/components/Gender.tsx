@@ -30,6 +30,10 @@ export const GenderEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => 
           <input value={values.female} onChange={e => setValues(prev => ({...prev, female: e.target.value}))} type="text" name="FemaleText" />
         </div>
       </div>
+      <input id='required' checked={values.isRequired} onChange={() => setValues((s) => ({ ...s, isRequired: !s.isRequired }))} name='isRequired' type="checkbox" />
+      <label className={localStyles.isRequired} htmlFor='required'>
+        Required
+      </label>
       <button type='submit' className={localStyles.addComponent}><FontAwesomeIcon icon={faPlus} />Add Component</button>
     </form>
   )

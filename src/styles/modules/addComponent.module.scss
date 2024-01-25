@@ -6,6 +6,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
+  position: relative;
+  z-index: 99;
 }
 
 // Component Container
@@ -27,6 +29,7 @@
 // Text Input
 .text {
   background-color: $GRAY;
+  
   height: 100px;
   @include padding-x(32px);
   display: flex;

@@ -220,7 +220,13 @@ Let's make this festival legendary together!`
                       }
                       {component[0] == "genderInput" && 
                       <div className={genderStyles.inputContainer}>
-                        <h3 className={genderStyles.title}>Gender</h3>
+                        <h3 className={genderStyles.title}>Gender {component[1].isRequired &&
+                          <span style={{
+                            color: "red"
+                          }}>*</span>}
+                          <button onClick={() => handleOpen(["RemoveComponent", component[0], i, section[1]])} className={styles.removeSection}>
+                            <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+                          </button></h3>
                         <div className={genderStyles.gendersContainer}>
                           <label htmlFor={`gender-input-male-${i + 1}`} className={genderStyles.maleInput}>
                             <input type="radio" id={`gender-input-male-${i + 1}`} name='gender' />
