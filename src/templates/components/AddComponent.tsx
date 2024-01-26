@@ -30,6 +30,15 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
             <div className={localStyles.female}><div className={localStyles.genderChoice}></div><FemaleIcon />Female</div>
           </div>
         </div>
+        {/* Country Input */}
+        <div onClick={() => setComponent("Country")} className={localStyles.componentContainer}>
+          <h3>Country</h3>
+          <div className={localStyles.country}>
+            <img src="https://flagsapi.com/MA/flat/64.png" />
+            <span>Morocco</span>
+            <div></div>
+          </div>
+        </div>
       </div>
     </>
   )

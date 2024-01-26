@@ -100,3 +100,34 @@
     }
   }
 }
+
+// Country Input
+.country {
+  display: flex;
+  align-items: center;
+  border: 2px solid $GRAY;
+  height: 40px;
+  position: relative;
+  div {
+    width: 1px;
+    height: 1px;
+    border-top: 8px solid rgba($color: $BLACK, $alpha: 0.8);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    position: absolute;
+    right: 20px;
+  }
+  span {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba($color: $BLACK, $alpha: 0.8);
+  }
+  img {
+    filter: brightness(1.2) contrast(0.9);
+    position: absolute;
+    left: -4px;
+    height: 60px;
+  }
+}
