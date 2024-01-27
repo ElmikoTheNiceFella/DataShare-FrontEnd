@@ -7,8 +7,15 @@ fs.readFile('FlagsNamesAndCodes.txt', function(err, data) {
     split(/\n+|\r+/ig)
     .filter(v => v && v != "IC" && v != "NY" && v != "XK")
   let obj = {}
+  const dontInclude = [
+  'BL', 'GP', 'SJ',
+  'UM', 'BV', 'HM',
+  'PM', 'IO', 'BQ',
+  'GF', 'SX'
+]
   for(let i = 0; i < flags.length; i+=2) {
-    obj[flags[i]] = flags[i+1]
+    if (!dontInclude.includes(flags[i]))
+      obj[flags[i]] = flags[i+1]
   }
   fs.writeFile('flagData.json', JSON.stringify(obj), function(err) {
     if (err) console.log(err.message)

@@ -17,8 +17,9 @@ type ModalProps = {
   addText: (inputData: InputType, sectionID: number) => void;
   addFullName: (inputData: InputType, sectionID: number) => void;
   addGender: (inputData: InputType, sectionID: number) => void;
+  addCountry: (inputData: InputType, sectionID: number) => void;
 }
-type HandleSubmitArgs = string | [string, number] | [string, number, {[key:string]:(string|boolean)}];
+type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:(string|boolean)}|string)];
 
 // Add Components
 type AddComponentProps = {

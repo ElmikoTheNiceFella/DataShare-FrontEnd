@@ -3,9 +3,9 @@ import styles from '../../styles/modules/modal.module.scss'
 // Hooks
 import { useState } from 'react';
 // Modal Components
-import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit } from '.'
+import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit } from '.'
 
-const Modal = ({ open, close, addSection, removeSection, removeComponent ,addText, addFullName, addGender }: ModalProps) => {
+const Modal = ({ open, close, addSection, removeSection, removeComponent ,addText, addFullName, addGender, addCountry }: ModalProps) => {
 
   /* --------------------------------------------------------- */
   /* Adding Changes And Calling Content Manipulation Functions */
@@ -45,6 +45,18 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent ,addTex
       case "Add Gender":
         addGender(type[2] as { [key: string]: string }, +type[1])
         break;
+      case "Add Country":
+        // Get Component Label
+        let countryData: { [key: string]: string } = {};
+        for (let [key, value] of data.entries()) {
+          if (key == "inputTitle" || key == "isRequired") {
+            countryData[key] = value as string
+          }
+        }
+        if  (typeof type[2] == "string")
+          countryData.defaultCountry = type[2]
+        addCountry(countryData, +type[1])
+        break;
       default:
         console.log("Submission Data Error")
         break;
@@ -66,6 +78,8 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent ,addTex
           return FullNameEdit
         case "Gender": 
           return GenderEdit
+        case "Country":
+          return CountryEdit
         default:
           return ""
       }

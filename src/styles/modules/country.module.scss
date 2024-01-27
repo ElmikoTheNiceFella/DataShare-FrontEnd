@@ -1,0 +1,166 @@
+@import '../variables';
+@import '../mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  button {
+    all: unset;
+    font-weight: bolder;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgba($color: $BLACK, $alpha: 0.75);
+    padding: 8px;
+    cursor: pointer;
+  }
+}
+.inputsContainer {
+  input {
+    all: unset;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $BLACK;
+    border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.25);
+    &::placeholder {
+      color: $BLACK;
+    }
+  }
+}
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+input[type="checkbox"]:checked + .isRequired::before {
+  background-color: $BLUE;
+}
+.isRequired {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  width: 40%;
+  &:hover {
+    &::before {
+      background-color: $GRAY;
+    }
+  }
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    transition: 0.1s ease-out;
+  }
+}
+.addComponent {
+  all: unset;
+  font-weight: 600;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  background-color: $BLUE;
+  color: white;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.country {
+  display: flex;
+  align-items: center;
+  border: 2px solid $GRAY;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  div:nth-of-type(1) {
+    width: 1px;
+    height: 1px;
+    border-top: 8px solid rgba($color: $BLACK, $alpha: 0.8);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    position: absolute;
+    right: 20px;
+  }
+  span {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba($color: $BLACK, $alpha: 0.8);
+  }
+  img {
+    filter: brightness(1.2) contrast(0.9);
+    position: absolute;
+    left: -4px;
+    height: 60px;
+  }
+}
+.search {
+    position: absolute;
+    width: calc(100% - 120px);
+    background-color: $GRAY;
+    height: 300px;
+    overflow-y: auto;
+    div {
+      width: 100%;
+      @include margin-y(8px);
+      div {
+        height: 40px;
+        background-color: $GRAY;
+        display: flex;
+        align-items: center;
+        input {
+          all: unset;
+          background-color: white;
+          width: 100%;
+          height: 40px;
+          padding-left: 24px;
+          font-size: 18px;
+          border: 2px solid rgba($color: $BLACK, $alpha: 0.5);
+          z-index: 99;
+        }
+        svg {
+          position: absolute;
+          right: 16px;
+          scale: 1.2;
+          filter: invert(0.4);
+          z-index: 99;
+        }
+      }
+    }
+    .searchCountry {
+      &:hover {
+        background-color: white;
+        img {
+          filter: saturate(1);
+        }
+      }
+      cursor: pointer;
+      transition: 0.1s ease-out;
+      display: flex;
+      margin-bottom: 8px;
+      height: 50px;
+      border-bottom: 2px solid rgba($color: $BLACK, $alpha: 0.75);
+      position: relative;
+      span {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      img {
+        position: absolute;
+        filter: saturate(0.5);  
+      }
+    }
+  }
