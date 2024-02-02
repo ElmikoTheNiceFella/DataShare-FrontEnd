@@ -3,8 +3,19 @@
 $BORDER: 2px;
 
 form {
-  width: 400px;
+  width: 500px;
 }
+@media (max-width: 1000px) {
+  form {
+    width: 350px;
+  }
+}
+@media (max-width: 500px) {
+  form {
+    width: 250px;
+  }
+}
+
 .inputContainer {
   display: flex;
   align-items: center;

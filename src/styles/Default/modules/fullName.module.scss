@@ -123,3 +123,9 @@ input[type="checkbox"]:checked + .isRequired::before {
     padding-bottom: 8px;
   }
 }
+@media (max-width: 800px) {
+  .inputContainer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+}

@@ -163,7 +163,7 @@ const Template1 = () => {
                 {/* Section Name */}
                 <h2>{section[0]}</h2>
                 {/* Delete Section */}
-                <button onClick={() => handleOpen(["RemoveSection", section[0], section[1]])} className={styles.removeSection}>
+                <button type='button' onClick={() => handleOpen(["RemoveSection", section[0], section[1]])} className={styles.removeSection}>
                   <FontAwesomeIcon type='button' icon={faTrash} style={{ color: "#1C1D1E" }} />
                 </button>
               </div>
