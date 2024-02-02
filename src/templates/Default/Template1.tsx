@@ -212,11 +212,11 @@ Let's make this festival legendary together!`
                   </div>
                 )}
               </div>
-              <button onClick={() => handleOpen(["AddComponent", section[1]])} className={styles.addComponent}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Component</button>
+              <button type='button' onClick={() => handleOpen(["AddComponent", section[1]])} className={styles.addComponent}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Component</button>
             </section>
           )}
           {/* Adding Section */}
-          <button onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>
