@@ -1,7 +1,35 @@
-import localStyles from '../../styles/modules/fullName.module.scss'
+import localStyles from '../../../styles/Default/modules/fullName.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faArrowLeft, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+
+export const FullName = ({styles, component, open, position, section}:ComponentProps) => {
+  return (
+    <div className={styles.inputContainer}>
+      <div>
+        <label htmlFor={`first-name-input-${position + 1}`}>{component[1].firstNameTitle}
+          {component[1].isRequired &&
+            <span style={{
+              color: "red"
+            }}>*</span>}
+        </label>
+        <input type="text" id={`first-name-input-${position + 1}`} placeholder={component[1].firstNamePH} />
+      </div>
+      <div>
+        <label htmlFor={`last-name-input-${position + 1}`}>{component[1].lastNameTitle}
+          {component[1].isRequired &&
+            <span style={{
+              color: "red"
+            }}>*</span>}
+        </label>
+        <button onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
+          <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+        </button>
+        <input type="text" id={`last-name-input-${position + 1}`} placeholder={component[1].lastNamePH} />
+      </div>
+    </div>
+  )
+}
 
 export const FullNameEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
   

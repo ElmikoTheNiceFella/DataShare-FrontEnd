@@ -1,5 +1,5 @@
-import styles from '../../styles/modules/modal.module.scss'
-import localStyles from '../../styles/modules/removeSection.module.scss'
+import styles from '../../../styles/Default/modules/modal.module.scss'
+import localStyles from '../../../styles/Default/modules/removeSection.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 

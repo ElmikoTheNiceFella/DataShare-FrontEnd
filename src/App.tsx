@@ -1,5 +1,5 @@
 import './App.scss'
-import { Template1 } from './templates';
+import { Template1 } from './templates/Default';
 
 function App() {
 

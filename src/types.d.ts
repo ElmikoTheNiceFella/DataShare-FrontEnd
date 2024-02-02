@@ -4,7 +4,10 @@ declare module "*.svg" {
   export default content;
 }
 
-/* Template1 Types */
+/* -----------------------*/
+/* Default Template Types */
+/* -----------------------*/
+
 type InputType = { [key: string]: FormDataEntryValue };
 
 /* Modal File */
@@ -41,7 +44,15 @@ type RemoveComponentProps = {
   close: () => void;
 }
 
-// Add Text Component
+// Component Props
+type ComponentProps = {
+  styles: CSSModuleClasses;
+  component:any;
+  open: (arg:[string, string, number, number]) => void;
+  position: number;
+  section: any;
+}
+// Text Component
 type TextEditProps = {
   back: (el: string) => void;
   sectionID: number;

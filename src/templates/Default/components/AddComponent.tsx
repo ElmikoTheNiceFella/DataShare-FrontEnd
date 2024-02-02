@@ -1,5 +1,5 @@
-import localStyles from '../../styles/modules/addComponent.module.scss'
-import { MaleIcon, FemaleIcon } from '../../../public/index'
+import localStyles from '../../../styles/Default/modules/addComponent.module.scss'
+import { MaleIcon, FemaleIcon } from '../../../../public/index'
 
 const AddComponent = ({ setComponent }: AddComponentProps) => {
 
@@ -26,7 +26,7 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
         <div onClick={() => setComponent("Gender")} className={localStyles.componentContainer}>
           <h3>Gender</h3>
           <div className={localStyles.gender}>
-            <div className={localStyles.male}><div className={localStyles.genderChoice}></div><MaleIcon/>Male</div>
+            <div className={localStyles.male}><div className={localStyles.genderChoice}></div><MaleIcon />Male</div>
             <div className={localStyles.female}><div className={localStyles.genderChoice}></div><FemaleIcon />Female</div>
           </div>
         </div>

@@ -1,13 +1,24 @@
-import localStyles from '../../styles/modules/text.module.scss'
+import localStyles from '../../../styles/Default/modules/text.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-// Actual Text Element
-// export const Text = () => {
-//   return (
-//     <></>
-//   )
-// }
+// Text Element
+export const Text = ({styles, component, position, section, open}:ComponentProps) => {
+  return (
+    <div className={styles.inputContainer}>
+      <label htmlFor={`text-input-${position + 1}`}>{component[1].inputTitle}
+        {component[1].isRequired &&
+          <span style={{
+            color: "red"
+          }}>*</span>}
+      </label>
+      <button onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
+        <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+      </button>
+      <input type="text" id={`text-input-${position + 1}`} placeholder={component[1].inputPlaceholder} />
+    </div>
+  )
+}
 
 // Editing The Text Element
 export const TextEdit = ({back, sectionID, handleSubmit}:TextEditProps) => {

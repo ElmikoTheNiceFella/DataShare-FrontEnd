@@ -1,27 +1,27 @@
-const binarySearch = (arr, item) => {
-  // Two Pointers
-  let left = 0;
-  let right = --arr.length; // arr.length - 1
+// const binarySearch = (arr, item) => {
+//   // Two Pointers
+//   let left = 0;
+//   let right = --arr.length; // arr.length - 1
 
-  // Index
-  let i;
+//   // Index
+//   let i;
 
-  // Loop log(n) times at most
-  for(let j = Math.log2(arr.length); j > 0; j--) {
-    // Get Middle Index
-    i = Math.floor((left+right)/2)
-    if (arr[i] > item) {
-      right = --i; // i - 1
-    } else if (arr[i] < item) {
-      left = ++i; // i + 1
-    } else {
-      return i;
-    }
-  }
+//   // Loop log(n) times at most
+//   for(let j = Math.log2(arr.length); j > 0; j--) {
+//     // Get Middle Index
+//     i = Math.floor((left+right)/2)
+//     if (arr[i] > item) {
+//       right = --i; // i - 1
+//     } else if (arr[i] < item) {
+//       left = ++i; // i + 1
+//     } else {
+//       return i;
+//     }
+//   }
 
-  // Item not found
-  return -1;
-}
+//   // Item not found
+//   return -1;
+// }
 
 // const newObj = {helo: "World"}
 
@@ -215,4 +215,4 @@ Show less
         
         
        GET https://flagsapi.com/SX/flat/64.png `
-console.log(text.match(/(?<=(flagsapi\.com\/)).*(?=(\/flat))/g).filter(s => s.length == 2))
+//console.log(text.match(/(?<=(flagsapi\.com\/)).*(?=(\/flat))/g).filter(s => s.length == 2))

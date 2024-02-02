@@ -1,5 +1,5 @@
 // Styles
-import styles from '../../styles/modules/modal.module.scss'
+import styles from '../../../styles/Default/modules/modal.module.scss'
 // Hooks
 import { useState } from 'react';
 // Modal Components
@@ -58,7 +58,7 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent ,addTex
         addCountry(countryData, +type[1])
         break;
       default:
-        console.log("Submission Data Error")
+        console.log("Data submission Error")
         break;
     }
   }
