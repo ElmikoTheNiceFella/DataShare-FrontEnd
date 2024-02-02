@@ -12,7 +12,7 @@ export const Text = ({styles, component, position, section, open}:ComponentProps
             color: "red"
           }}>*</span>}
       </label>
-      <button onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
+      <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
         <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
       </button>
       <input type="text" id={`text-input-${position + 1}`} placeholder={component[1].inputPlaceholder} />

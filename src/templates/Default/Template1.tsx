@@ -8,7 +8,9 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 // Components
 import { Modal, Text, FullName, Gender, Country } from './components';
 // Hooks
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// Demo Data
+import { demoDesc } from '../../../demoData'
 
 const Template1 = () => {
 
@@ -112,15 +114,16 @@ const Template1 = () => {
     handleAddComponent("countryInput", inputData, sectionID)
   }
 
-  /* --------- */
-  /* DEMO DATA */
-  /* --------- */
+  // Saving Changes
+  useEffect(() => {
+      window.localStorage.setItem('FORM_CONTENT', JSON.stringify(content))
+  }, [content])
 
-  const demoDesc = `
-Hello Students, Get ready for something epic – Festival, happening on X DATE!
-It's your chance to represent your country, showcase your culture and make awesome memories in the process!
-Whether you're a performer, leader, or volunteer, we've got a spot for you.
-Let's make this festival legendary together!`
+  // Getting Data After Refreshing
+  useEffect(() => {
+    const data = window.localStorage.getItem('FORM_CONTENT')
+    console.log(data)
+  }, [])
 
   return (
     <>
@@ -145,7 +148,9 @@ Let's make this festival legendary together!`
           Festival of Cultures
         </h1>
       </header>
-      <main className={styles.formContainer}>
+      <main style={{
+        height: open[0] ? "calc(100vh - 150px)" : "auto"
+      }} className={styles.formContainer}>
         {/* Form Description */}
         <p className={styles.description}>{demoDesc}</p>
         {/* Form Container */}
@@ -158,13 +163,13 @@ Let's make this festival legendary together!`
                 <h2>{section[0]}</h2>
                 {/* Delete Section */}
                 <button onClick={() => handleOpen(["RemoveSection", section[0], section[1]])} className={styles.removeSection}>
-                  <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
+                  <FontAwesomeIcon type='button' icon={faTrash} style={{ color: "#1C1D1E" }} />
                 </button>
               </div>
               <div className={styles.inputsContainer}>
                 {/* Rendering Components */}
                 {section[2].map((component: any, i: number) =>
-                  <div className={styles.inputContainer}>
+                  <div key={i} className={styles.inputContainer}>
                     {/* Text Input Field */}
                     {component[0] == "textInput" &&
                       <Text 

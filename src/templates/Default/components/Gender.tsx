@@ -11,7 +11,7 @@ export const Gender = ({ styles, component, position, section, open }:ComponentP
         <span style={{
           color: "red"
         }}>*</span>}
-        <button onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
+        <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
           <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
         </button></h3>
       <div className={styles.gendersContainer}>

@@ -30,11 +30,11 @@ export const Country = ({component, open, position, section}:ComponentProps) => 
 
   return (
     <div className={localStyles.inputContainer}>
-      <h3 className={localStyles.title}>{component[1].inputTitle} {component[1].isRequired &&
+      <h3 className={localStyles.title}><span>{component[1].inputTitle}{component[1].isRequired &&
         <span style={{
           color: "red"
-        }}>*</span>}
-        <button onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={genderStyles.removeSection}>
+        }}>*</span>}</span>
+        <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={genderStyles.removeSection}>
           <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
         </button></h3>
       <div onClick={() => setClose(t => !t)} className={localStyles.country}>

@@ -31,11 +31,12 @@
 
 // Main Form Styles
 .formContainer {
-  height: calc(100vh - 150px);
+  min-height: calc(100vh - 150px);
   background-color: $GRAY;
   width: 80%;
   margin: auto;
-
+  padding-bottom: 50px;
+  overflow-y: hidden;
   .description {
     text-align: center;
     padding: 40px 20%;

@@ -79,7 +79,7 @@ input[type="checkbox"]:checked + .isRequired::before {
   display: flex;
   align-items: center;
   border: 2px solid $GRAY;
-  height: 40px;
+  height: 45px;
   position: relative;
   cursor: pointer;
   div:nth-of-type(1) {
@@ -102,7 +102,7 @@ input[type="checkbox"]:checked + .isRequired::before {
     filter: brightness(1.2) contrast(0.9);
     position: absolute;
     left: -4px;
-    height: 60px;
+    height: 67.5px;
   }
 }
 .search {
@@ -166,9 +166,6 @@ input[type="checkbox"]:checked + .isRequired::before {
   }
 
 // Country Show
-.header {
-  
-}
 .title {
   font-weight: bold;
   font-size: 18px;
