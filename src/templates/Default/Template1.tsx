@@ -19,6 +19,7 @@ const Template1 = () => {
   /* ------------ */
 
   const [content, setContent] = useState<any>({
+    template: "default",
     sections: []
   });
 
