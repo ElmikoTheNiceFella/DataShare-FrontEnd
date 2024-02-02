@@ -130,12 +130,14 @@ input[type="checkbox"]:checked + .isRequired::before {
       font-weight: bold;
       font-size: 20px;
       svg {
+        z-index: 1;
         scale: 1.5;
       }
       &::before {
         left: -30px;
         content: '';
         position: absolute;
+        z-index: 1;
         width: 10px;
         height: 10px;
         border: 2px solid white;
@@ -155,6 +157,14 @@ input[type="checkbox"]:checked + .isRequired::before {
     input:checked + div::before {
       background-color: $PINK;
     }
+  }
+}
+.gendersContainer {
+  flex-direction: row;
+}
+@media (max-width: 800px) {
+  .gendersContainer {
+    flex-direction: column;
   }
 }
 .title {

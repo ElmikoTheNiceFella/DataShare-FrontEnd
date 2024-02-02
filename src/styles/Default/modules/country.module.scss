@@ -127,14 +127,12 @@ input[type="checkbox"]:checked + .isRequired::before {
           padding-left: 24px;
           font-size: 18px;
           border: 2px solid rgba($color: $BLACK, $alpha: 0.5);
-          z-index: 99;
         }
         svg {
           position: absolute;
           right: 16px;
           scale: 1.2;
           filter: invert(0.4);
-          z-index: 99;
         }
       }
     }
@@ -191,6 +189,7 @@ input[type="checkbox"]:checked + .isRequired::before {
 }
 .searchShow {
     position: absolute;
+    z-index: 5;
     background-color: $GRAY;
     height: 300px;
     width: 100%;
