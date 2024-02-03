@@ -11,16 +11,18 @@ declare module "*.svg" {
 type InputType = { [key: string]: FormDataEntryValue };
 
 /* Modal File */
+type AddComponent = (inputData: InputType, sectionID: number) => void;
 type ModalProps = {
   open: string[];
   close: () => void;
   addSection: (sectionName: string) => void;
   removeSection: (id: number) => void;
   removeComponent: (sectionID: number, componentID: number) => void;
-  addText: (inputData: InputType, sectionID: number) => void;
-  addFullName: (inputData: InputType, sectionID: number) => void;
-  addGender: (inputData: InputType, sectionID: number) => void;
-  addCountry: (inputData: InputType, sectionID: number) => void;
+  addText: AddComponent;
+  addFullName: AddComponent;
+  addGender: AddComponent;
+  addCountry: AddComponent;
+  addYesOrNo: AddComponent;
 }
 type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:(string|boolean)}|string)];
 

@@ -12,6 +12,7 @@ export { Text } from './Text'
 export { FullName } from './FullName'
 export { Gender } from './Gender'
 export { Country } from './Country'
+export { YesOrNo } from './YesOrNo'
 
 // Minor Components
 export { TextEdit } from './Text'

@@ -1,12 +1,12 @@
 // Styles
 import styles from '../../styles/Default//modules/template1.module.scss'
 // Component Styles
-import { textStyles, fullNameStyles, genderStyles, countryStyles } from '../../styles/Default/modules';
+import { textStyles, fullNameStyles, binaryStyles, countryStyles } from '../../styles/Default/modules';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 // Components
-import { Modal, Text, FullName, Gender, Country } from './components';
+import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
 import { useState, useEffect } from 'react';
 // Demo Data
@@ -111,13 +111,18 @@ const Template1 = () => {
   }
 
   // Add Country Input
-  const handleAddCountry = (inputData:InputType, sectionID:number) => {
+  const handleAddCountry = (inputData: InputType, sectionID: number) => {
     handleAddComponent("countryInput", inputData, sectionID)
+  }
+
+  // Add YesOrNo Input
+  const handleAddYesOrNo = (inputData: InputType, sectionID: number) => {
+    handleAddComponent("yesOrNoInput", inputData, sectionID)
   }
 
   // Saving Changes
   useEffect(() => {
-      window.localStorage.setItem('FORM_CONTENT', JSON.stringify(content))
+    window.localStorage.setItem('FORM_CONTENT', JSON.stringify(content))
   }, [content])
 
   // Getting Data After Refreshing
@@ -138,7 +143,8 @@ const Template1 = () => {
         addText={handleAddText}
         addFullName={handleAddFullName}
         addGender={handleAddGender}
-        addCountry={handleAddCountry} />
+        addCountry={handleAddCountry}
+        addYesOrNo={handleAddYesOrNo} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -173,7 +179,7 @@ const Template1 = () => {
                   <div key={i} className={styles.inputContainer}>
                     {/* Text Input Field */}
                     {component[0] == "textInput" &&
-                      <Text 
+                      <Text
                         component={component}
                         open={handleOpen}
                         position={i}
@@ -200,13 +206,13 @@ const Template1 = () => {
                         open={handleOpen}
                         position={i}
                         section={section}
-                        styles={genderStyles}
+                        styles={binaryStyles}
                         key={`gender-${i}`}
                       />
                     }
-                    {
-                      component[0] == "countryInput" &&
-                      <Country 
+                    {/* Country Input Field */}
+                    {component[0] == "countryInput" &&
+                      <Country
                         component={component}
                         open={handleOpen}
                         position={i}
@@ -215,20 +221,31 @@ const Template1 = () => {
                         styles={countryStyles}
                       />
                     }
+                    {/* Yes or No Input Field */}
+                    {component[0] == "yesOrNoInput" &&
+                      <YesOrNo
+                        component={component}
+                        open={handleOpen}
+                        position={i}
+                        section={section}
+                        styles={binaryStyles}
+                        key={`yes-or-no-${i}`}
+                      />
+                    }
                   </div>
                 )}
               </div>
               <button type='button' onClick={() => handleOpen(["AddComponent", section[1]])} className={styles.addComponent}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Component</button>
             </section>
           )}
-          {/* Adding Section */}
+          {/* Add Section */}
           <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>
       </main>
       <footer>
-        {/* Copyright */}
+        {/* Copyright (empty for now) */}
       </footer>
     </>
   )

@@ -4,7 +4,7 @@ import { faArrowLeft, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { MaleIcon, FemaleIcon } from '../../../../public';
 import { useState } from 'react';
 
-export const Gender = ({ styles, component, position, section, open }:ComponentProps) => {
+export const Gender = ({ styles, component, position, section, open }: ComponentProps) => {
   return (
     <div className={styles.inputContainer}>
       <h3 className={styles.title}>Gender {component[1].isRequired &&
@@ -22,15 +22,13 @@ export const Gender = ({ styles, component, position, section, open }:ComponentP
             {component[1].male}
           </div>
         </label>
-        <div className={styles.femaleInput}>
-          <label htmlFor={`gender-input-female-${position + 1}`}>
-            <input type="radio" id={`gender-input-female-${position + 1}`} name='gender' />
-            <div>
-              <FemaleIcon />
-              {component[1].female}
-            </div>
-          </label>
-        </div>
+        <label className={styles.femaleInput} htmlFor={`gender-input-female-${position + 1}`}>
+          <input type="radio" id={`gender-input-female-${position + 1}`} name='gender' />
+          <div>
+            <FemaleIcon />
+            {component[1].female}
+          </div>
+        </label>
       </div>
     </div>
   )

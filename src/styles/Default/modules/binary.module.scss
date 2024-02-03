@@ -17,6 +17,19 @@
     cursor: pointer;
   }
 }
+.yesOrNoTitle {
+  all: unset;
+  width: 100%;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: $BLACK;
+  border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.25);
+  &::placeholder {
+    color: $BLACK;
+  }
+}
 .inputsContainer {
   display: flex;
   gap: 20px;
@@ -123,32 +136,39 @@ input[type="checkbox"]:checked + .isRequired::before {
     padding: 0px 8px 0px 8px;
     cursor: pointer;
   }
-  .gendersContainer {
+  .gendersContainer, .yesOrNoContainer {
     display: flex;
     gap: 20px;
   }
-  .maleInput, .femaleInput {
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .maleInput, .femaleInput, .yesInput, .noInput {
     user-select: none;
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    input {
-      position: absolute;
-      width: 0;
-      height: 0;
-    }
+    transition: 0.1s ease-out;
     div {
       position: relative;
       display: flex;
       gap: 12px;
       align-items: center;
-      color: white;
       font-weight: bold;
       font-size: 20px;
       svg {
         z-index: 1;
+      }
+    }
+  }
+  .maleInput, .femaleInput {
+    div {
+      color: white;
+      svg {
         scale: 1.5;
       }
       &::before {
@@ -176,12 +196,28 @@ input[type="checkbox"]:checked + .isRequired::before {
       background-color: $PINK;
     }
   }
+  .yesInput {
+    border: 2px solid $GREEN;
+    color: $GREEN;
+  }
+  .yesRadio:checked + .yesInput {
+    background-color: $GREEN;
+    color: white;
+  }
+  .noInput {
+    border: 2px solid $RED;
+    color: $RED;
+  }
+  .noRadio:checked + .noInput {
+    background-color: $RED;
+    color: white;
+  }
 }
-.gendersContainer {
+.gendersContainer, .yesOrNoContainer {
   flex-direction: row;
 }
 @media (max-width: 800px) {
-  .gendersContainer {
+  .gendersContainer, .yesOrNoContainer {
     flex-direction: column;
   }
 }
