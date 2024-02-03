@@ -1,5 +1,5 @@
 import localStyles from '../../../styles/Default/modules/country.module.scss'
-import genderStyles from '../../../styles/Default/modules/gender.module.scss'
+import binaryStyles from '../../../styles/Default/modules/binary.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faPlus, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import * as countriesOBJ from '../../../../flagData.json'
@@ -34,7 +34,7 @@ export const Country = ({component, open, position, section}:ComponentProps) => 
         <span style={{
           color: "red"
         }}>*</span>}</span>
-        <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={genderStyles.removeSection}>
+        <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={binaryStyles.removeSection}>
           <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
         </button></h3>
       <div onClick={() => setClose(t => !t)} className={localStyles.country}>

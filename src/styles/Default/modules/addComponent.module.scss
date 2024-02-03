@@ -139,3 +139,33 @@
     height: 60px;
   }
 }
+
+// Yes or No Input
+.yesOrNo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  .yes {
+    border: 2px solid $GREEN;
+    color: $GREEN;
+  }
+  .no {
+    border: 2px solid $RED;
+    color: $RED;
+    svg {
+      scale: 0.8;
+    }
+  }
+  div {
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    svg {
+      scale: 1;
+    }
+  }
+}

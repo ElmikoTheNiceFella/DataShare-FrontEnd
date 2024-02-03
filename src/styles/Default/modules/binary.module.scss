@@ -21,7 +21,7 @@
   display: flex;
   gap: 20px;
 }
-.male, .female {
+.male, .female, .yes, .no {
   width: 50%;
   height: 50px;
   display: flex;
@@ -36,14 +36,18 @@
   }
   input {
     all: unset;
-    border-bottom: 1px solid white;
-    color: white;
     margin-left: 15px;
     width: 75px;
     font-size: 20px;
   }
+}
+.male, .female {
   svg {
     scale: 1.5;
+  }
+  input {
+    color: white;
+    border-bottom: 1px solid white;
   }
 }
 .male {
@@ -51,6 +55,20 @@
 }
 .female {
   background-color: $PINK;
+}
+.yes {
+  border: 2px solid $GREEN;
+  color: $GREEN;
+  input {
+    border-bottom: 1px solid $GREEN;
+  }
+}
+.no {
+  border: 2px solid $RED;
+  color: $RED;
+  input {
+    border-bottom: 1px solid $RED;
+  }
 }
 input[type="checkbox"] {
   position: absolute;

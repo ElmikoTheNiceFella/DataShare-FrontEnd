@@ -1,5 +1,7 @@
 import localStyles from '../../../styles/Default/modules/addComponent.module.scss'
 import { MaleIcon, FemaleIcon } from '../../../../public/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faX, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const AddComponent = ({ setComponent }: AddComponentProps) => {
 
@@ -37,6 +39,14 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
             <img src="https://flagsapi.com/MA/flat/64.png" />
             <span>Morocco</span>
             <div></div>
+          </div>
+        </div>
+        {/* Yes or No Input */}
+        <div onClick={() => setComponent("YesOrNo")} className={localStyles.componentContainer}>
+          <h3>Yes or No</h3>
+          <div className={localStyles.yesOrNo}>
+            <div className={localStyles.yes}><FontAwesomeIcon icon={faCheck} />Yes</div>
+            <div className={localStyles.no}><FontAwesomeIcon icon={faX} />No</div>
           </div>
         </div>
       </div>

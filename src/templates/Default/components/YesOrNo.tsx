@@ -1,6 +1,6 @@
 import localStyles from '../../../styles/Default/modules/binary.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faPlus, faTrash, faCheck, faX } from '@fortawesome/free-solid-svg-icons'
 import { MaleIcon, FemaleIcon } from '../../../../public';
 import { useState } from 'react';
 
@@ -36,30 +36,30 @@ export const Gender = ({ styles, component, position, section, open }:ComponentP
   )
 }
 
-export const GenderEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
+export const YesOrNoEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
 
   const [values, setValues] = useState({
-    male: "Male",
-    female: "Female",
+    title: "",
+    yes: "Yes",
+    no: "No",
     isRequired: true
   })
 
   return (
     <form onSubmit={handleSubmit(["Add Gender", sectionID, values])}>
       <div className={localStyles.header}>
-        <h2>Gender Component</h2>
+        <h2>Yes or No Component</h2>
         <button type='button' onClick={() => back("Back")}><FontAwesomeIcon icon={faArrowLeft} />Back</button>
       </div>
+      <input name='inputTitle' value={values.title} onChange={e => setValues(prev => ({...prev, title: e.target.value}))} placeholder='Input Title' type="text" />
       <div className={localStyles.inputsContainer}>
-        <div className={localStyles.male}>
-          <div></div>
-          <MaleIcon />
-          <input value={values.male} onChange={e => setValues(prev => ({ ...prev, male: e.target.value }))} type="text" name="MaleText" />
+        <div className={localStyles.yes}>
+          <FontAwesomeIcon icon={faCheck} />
+          <input value={values.yes} onChange={e => setValues(prev => ({ ...prev, male: e.target.value }))} type="text" name="MaleText" />
         </div>
-        <div className={localStyles.female}>
-          <div></div>
-          <FemaleIcon />
-          <input value={values.female} onChange={e => setValues(prev => ({ ...prev, female: e.target.value }))} type="text" name="FemaleText" />
+        <div className={localStyles.no}>
+          <FontAwesomeIcon icon={faX} />
+          <input value={values.no} onChange={e => setValues(prev => ({ ...prev, female: e.target.value }))} type="text" name="FemaleText" />
         </div>
       </div>
       <input id='required' checked={values.isRequired} onChange={() => setValues((s) => ({ ...s, isRequired: !s.isRequired }))} name='isRequired' type="checkbox" />
