@@ -49,6 +49,13 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
             <div className={localStyles.no}><FontAwesomeIcon icon={faX} />No</div>
           </div>
         </div>
+        {/* Choices */}
+        <div onClick={() => setComponent("Choices")} className={localStyles.componentContainer}>
+          <h3>Choices</h3>
+          <div className={localStyles.text}>
+            <div><span className={localStyles.choice}></span>Choice</div>
+          </div>
+        </div>
       </div>
     </>
   )

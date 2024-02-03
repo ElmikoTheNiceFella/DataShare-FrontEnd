@@ -1,0 +1,148 @@
+@import '../variables';
+@import '../mixins';
+
+/* Choices Edit */
+
+// Add Component Defaults
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  button {
+    all: unset;
+    font-weight: bolder;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgba($color: $BLACK, $alpha: 0.75);
+    padding: 8px;
+    cursor: pointer;
+  }
+}
+.title {
+  all: unset;
+  width: 100%;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: $BLACK;
+  border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.25);
+  &::placeholder {
+    color: $BLACK;
+  }
+}
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+input[type="checkbox"]:checked + .isRequired::before {
+  background-color: $BLUE;
+}
+.isRequired {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  user-select: none;
+  width: 40%;
+  &:hover {
+    &::before {
+      background-color: $GRAY;
+    }
+  }
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    transition: 0.1s ease-out;
+  }
+}
+.addChoice {
+  all: unset;
+  font-weight: 600;
+  width: 100%;
+  height: 40px;
+  margin-top: 15px;
+  background-color: $GRAY;
+  border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+  color: rgba($color: $BLACK, $alpha: 0.75);
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.addComponent {
+  all: unset;
+  font-weight: 600;
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  background-color: $BLUE;
+  color: white;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+// Choices
+.choicesContainer {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.choiceAdd {
+  display: flex;
+  align-items: center;
+  background-color: $GRAY;
+  border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+  color: rgba($color: $BLACK, $alpha: 0.75);
+  margin-bottom: 10px;
+  label {
+    display: flex;
+    gap: 15px;
+    width: 90%;
+    align-items: center;
+    @include padding-y(10px);
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 20px;
+    input {
+      all: unset;
+      border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.75);
+      width: 100%;
+      cursor: text;
+    }
+  }
+  input[type="radio"] {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+  }
+  label::before {
+    content: '';
+    margin-left: 20px;
+    width: 15px;
+    height: 15px;
+    border-radius: 99px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    background-color: white;
+    transition: 0.1s ease-out;
+  }
+  input:checked + label::before {
+    background-color: rgba($color: $BLUE, $alpha: 0.75);
+  }
+  button {
+    all: unset;
+    text-align: center;
+    width: 10%;
+    height: 40px;
+    cursor: pointer;
+  }
+}
+/* Choices Show */

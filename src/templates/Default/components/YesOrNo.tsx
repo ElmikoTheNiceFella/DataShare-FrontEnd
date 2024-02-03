@@ -1,7 +1,6 @@
 import localStyles from '../../../styles/Default/modules/binary.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faPlus, faTrash, faCheck, faX } from '@fortawesome/free-solid-svg-icons'
-import { MaleIcon, FemaleIcon } from '../../../../public';
 import { useState } from 'react';
 
 export const YesOrNo = ({ styles, component, position, section, open }: ComponentProps) => {

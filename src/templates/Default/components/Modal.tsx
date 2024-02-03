@@ -3,7 +3,7 @@ import styles from '../../../styles/Default/modules/modal.module.scss'
 // Hooks
 import { useState } from 'react';
 // Modal Components
-import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit, YesOrNoEdit } from '.'
+import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit, YesOrNoEdit, ChoicesEdit } from '.'
 
 const Modal = ({ open, close, addSection, removeSection, removeComponent, addText, addFullName, addGender, addCountry, addYesOrNo }: ModalProps) => {
 
@@ -85,6 +85,8 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent, addTex
           return CountryEdit
         case "YesOrNo":
           return YesOrNoEdit
+        case "Choices":
+          return ChoicesEdit
         default:
           return ""
       }
