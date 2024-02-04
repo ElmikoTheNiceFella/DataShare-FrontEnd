@@ -1,13 +1,13 @@
 import './App.scss'
-import { Template1 } from './templates/Default';
+import Default from './templates/Default/Default';
 
 function App() {
 
-  const template = "Template1";
+  const template = "Default";
 
   return (
     <>
-      {template == "Template1" && <Template1 />}
+      {template == "Default" && <Default />}
     </>
   )
 }

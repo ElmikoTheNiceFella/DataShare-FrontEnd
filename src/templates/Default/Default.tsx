@@ -1,5 +1,5 @@
 // Styles
-import styles from '../../styles/Default//modules/template1.module.scss'
+import styles from '../../styles/Default/modules/default.module.scss'
 // Component Styles
 import { textStyles, fullNameStyles, binaryStyles, countryStyles } from '../../styles/Default/modules';
 // Icons
@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 // Demo Data
 import { demoDesc } from '../../../demoData'
 
-const Template1 = () => {
+const Default = () => {
 
   /* ------------ */
   /* Form Content */
@@ -251,4 +251,4 @@ const Template1 = () => {
   )
 }
 
-export default Template1
+export default Default

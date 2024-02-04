@@ -24,12 +24,11 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
             <div>Last Name</div>
           </div>
         </div>
-        {/* Gender Input */}
-        <div onClick={() => setComponent("Gender")} className={localStyles.componentContainer}>
-          <h3>Gender</h3>
-          <div className={localStyles.gender}>
-            <div className={localStyles.male}><div className={localStyles.genderChoice}></div><MaleIcon />Male</div>
-            <div className={localStyles.female}><div className={localStyles.genderChoice}></div><FemaleIcon />Female</div>
+        {/* Choices */}
+        <div onClick={() => setComponent("Choices")} className={localStyles.componentContainer}>
+          <h3>Choices</h3>
+          <div className={localStyles.text}>
+            <div><span className={localStyles.choice}></span>Choice</div>
           </div>
         </div>
         {/* Country Input */}
@@ -41,19 +40,20 @@ const AddComponent = ({ setComponent }: AddComponentProps) => {
             <div></div>
           </div>
         </div>
+        {/* Gender Input */}
+        <div onClick={() => setComponent("Gender")} className={localStyles.componentContainer}>
+          <h3>Gender</h3>
+          <div className={localStyles.gender}>
+            <div className={localStyles.male}><div className={localStyles.genderChoice}></div><MaleIcon />Male</div>
+            <div className={localStyles.female}><div className={localStyles.genderChoice}></div><FemaleIcon />Female</div>
+          </div>
+        </div>
         {/* Yes or No Input */}
         <div onClick={() => setComponent("YesOrNo")} className={localStyles.componentContainer}>
           <h3>Yes or No</h3>
           <div className={localStyles.yesOrNo}>
             <div className={localStyles.yes}><FontAwesomeIcon icon={faCheck} />Yes</div>
             <div className={localStyles.no}><FontAwesomeIcon icon={faX} />No</div>
-          </div>
-        </div>
-        {/* Choices */}
-        <div onClick={() => setComponent("Choices")} className={localStyles.componentContainer}>
-          <h3>Choices</h3>
-          <div className={localStyles.text}>
-            <div><span className={localStyles.choice}></span>Choice</div>
           </div>
         </div>
       </div>
