@@ -11,10 +11,13 @@ export const Choices = () => {
 
 export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
 
-  const [choices, setChoices] = useState<string[]>([]);
+  const [choices, setChoices] = useState<(string|string[])[]>([]);
 
   const handleAddChoice = () => {
     setChoices(prev => [...prev, ""])
+  }
+  const handleAddCustomChoice = () => {
+    setChoices(prev => [...prev, [""]])
   }
   const handleRemoveChoice = (i:number) => {
     setChoices(prev => [...prev].filter(v => prev.indexOf(v) !== i))
@@ -32,6 +35,7 @@ export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) =>
           <div className={localStyles.choiceAdd}>
             <input type="radio" name="choices" id={`choice-${i}`} />
             <label htmlFor={`choice-${i}`}>
+              {typeof choice == "string" ?
               <input 
                 type="text"
                 value={choice}
@@ -40,12 +44,28 @@ export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) =>
                   copy[i] = e.target.value
                   return copy
                 })} />
+                :
+                <input
+                  type="text"
+                  value={choice[0]}
+                  style={{
+                    color: "#2d2e30"
+                  }}
+                  onChange={e => setChoices(prev => {
+                    let copy = [...prev];
+                    if (Array.isArray(copy[i])) {
+                      (copy[i] as string[])[0] = e.target.value
+                    }
+                    return copy
+                  })} />
+              }
             </label>
             <button onClick={() => handleRemoveChoice(i)} type='button'><FontAwesomeIcon icon={faTrash} /></button>
           </div>
         ))}
       </div>
       <button onClick={handleAddChoice} className={localStyles.addChoice} type='button'><FontAwesomeIcon icon={faPlus} />Add Choice</button>
+      <button onClick={handleAddCustomChoice} className={localStyles.addChoice} type='button'><FontAwesomeIcon icon={faPlus} />Add Custom Choice</button>
       <input id='required' name='isRequired' type="checkbox" />
       <label className={localStyles.isRequired} htmlFor='required'>
         Required
