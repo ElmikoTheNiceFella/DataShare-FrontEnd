@@ -10,7 +10,7 @@ export const Choices = () => {
 }
 
 export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
-  
+
   const [choices, setChoices] = useState<string[]>([]);
 
   const handleAddChoice = () => {

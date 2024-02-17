@@ -5,6 +5,7 @@ import { textStyles, fullNameStyles, binaryStyles, countryStyles } from '../../s
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import FM_LOGO from '../../../public/FormMaker.png'
 // Components
 import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
@@ -148,7 +149,9 @@ const Default = () => {
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
-          <div className={styles.demoLogo}></div>
+          <div className={styles.demoLogo}>
+            <img src={FM_LOGO} alt="" />
+          </div>
         </div>
         {/* Form Title */}
         <h1 className={styles.formTitle}>
