@@ -1,7 +1,7 @@
 import localStyles from '../../../styles/Default/modules/choices.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Choices = () => {
   return (
@@ -12,6 +12,15 @@ export const Choices = () => {
 export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) => {
 
   const [choices, setChoices] = useState<(string|string[])[]>([]);
+
+  const [result, setResult] = useState<{ [key: string]: any }>({ title: "Input Title", choices, isRequired: ""});
+
+  useEffect(() => {
+    setResult(prev => ({
+      ...prev,
+      choices
+    }))
+  }, [choices])
 
   const handleAddChoice = () => {
     setChoices(prev => [...prev, ""])
@@ -24,14 +33,14 @@ export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) =>
   }
   
   return (
-    <form onSubmit={handleSubmit(["Add Choices", sectionID])}>
+    <form onSubmit={handleSubmit(["Add Choices", sectionID, result])}>
       <div className={localStyles.header}>
         <h2>Choices Component</h2>
         <button type='button' onClick={() => back("Back")}><FontAwesomeIcon icon={faArrowLeft} />Back</button>
       </div>
-      <input className={localStyles.title} name='inputTitle' placeholder='Input Title' type="text" />
+      <input onChange={(e) => setResult(p => ({...p, title: e.target.value}))} className={localStyles.title} name='inputTitle' value={result.title} type="text" />
       <div className={localStyles.choicesContainer}>
-        {choices.map((choice, i) => (
+        {result.choices.map((choice:(string|string[]), i:number) => (
           <div className={localStyles.choiceAdd}>
             <input type="radio" name="choices" id={`choice-${i}`} />
             <label htmlFor={`choice-${i}`}>
@@ -66,7 +75,7 @@ export const ChoicesEdit = ({ back, sectionID, handleSubmit }: TextEditProps) =>
       </div>
       <button onClick={handleAddChoice} className={localStyles.addChoice} type='button'><FontAwesomeIcon icon={faPlus} />Add Choice</button>
       <button onClick={handleAddCustomChoice} className={localStyles.addChoice} type='button'><FontAwesomeIcon icon={faPlus} />Add Custom Choice</button>
-      <input id='required' name='isRequired' type="checkbox" />
+      <input id='required' onChange={(e) => setResult(p => ({ ...p, isRequired: `${e.target.value}` }))} name='isRequired' type="checkbox" />
       <label className={localStyles.isRequired} htmlFor='required'>
         Required
       </label>

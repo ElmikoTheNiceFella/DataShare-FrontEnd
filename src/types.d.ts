@@ -24,7 +24,7 @@ type ModalProps = {
   addCountry: AddComponent;
   addYesOrNo: AddComponent;
 }
-type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:(string|boolean)}|string)];
+type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:any}|string)];
 
 // Add Components
 type AddComponentProps = {

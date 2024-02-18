@@ -60,6 +60,9 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent, addTex
       case "Add YesOrNo":
         addYesOrNo(type[2] as { [key: string]: string }, +type[1])
         break;
+      case "Add Choices":
+        console.log(type[2], +type[1])
+        break;
       default:
         console.log("Data submission Error")
         break;
