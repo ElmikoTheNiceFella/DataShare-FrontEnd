@@ -1,7 +1,7 @@
 // Styles
 import styles from '../../styles/Default/modules/default.module.scss'
 // Component Styles
-import { textStyles, fullNameStyles, binaryStyles, countryStyles } from '../../styles/Default/modules';
+import { textStyles, fullNameStyles, binaryStyles, countryStyles, choicesStyles } from '../../styles/Default/modules';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 import { useState, useEffect } from 'react';
 // Demo Data
 import { demoDesc } from '../../../demoData'
+import { Choices } from './components/Choices';
 
 const Default = () => {
 
@@ -121,6 +122,10 @@ const Default = () => {
     handleAddComponent("yesOrNoInput", inputData, sectionID)
   }
 
+  // Add Choices
+  const handleAddChoices = (inputData: InputType, sectionID: number) => {
+    handleAddComponent("choicesInput", inputData, sectionID)
+  }
   // Saving Changes
   useEffect(() => {
     window.localStorage.setItem('FORM_CONTENT', JSON.stringify(content))
@@ -145,7 +150,8 @@ const Default = () => {
         addFullName={handleAddFullName}
         addGender={handleAddGender}
         addCountry={handleAddCountry}
-        addYesOrNo={handleAddYesOrNo} />
+        addYesOrNo={handleAddYesOrNo}
+        addChoices={handleAddChoices} />
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
@@ -233,6 +239,17 @@ const Default = () => {
                         section={section}
                         styles={binaryStyles}
                         key={`yes-or-no-${i}`}
+                      />
+                    }
+                    {/* Choices Input Field */}
+                    {component[0] == "choicesInput" &&
+                      <Choices
+                        component={component}
+                        open={handleOpen}
+                        position={i}
+                        section={section}
+                        styles={choicesStyles}
+                        key={`choices-${i}`}
                       />
                     }
                   </div>

@@ -13,6 +13,7 @@ export { FullName } from './FullName'
 export { Gender } from './Gender'
 export { Country } from './Country'
 export { YesOrNo } from './YesOrNo'
+export {Choices} from './Choices'
 
 // Minor Components
 export { TextEdit } from './Text'

@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Modal Components
 import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit, YesOrNoEdit, ChoicesEdit } from '.'
 
-const Modal = ({ open, close, addSection, removeSection, removeComponent, addText, addFullName, addGender, addCountry, addYesOrNo }: ModalProps) => {
+const Modal = ({ open, close, addSection, removeSection, removeComponent, addText, addFullName, addGender, addCountry, addYesOrNo, addChoices }: ModalProps) => {
 
   /* --------------------------------------------------------- */
   /* Adding Changes And Calling Content Manipulation Functions */
@@ -61,7 +61,7 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent, addTex
         addYesOrNo(type[2] as { [key: string]: string }, +type[1])
         break;
       case "Add Choices":
-        console.log(type[2], +type[1])
+        addChoices(type[2] as { [key: string]: string }, +type[1])
         break;
       default:
         console.log("Data submission Error")

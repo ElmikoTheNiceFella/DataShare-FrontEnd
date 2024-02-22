@@ -23,6 +23,7 @@ type ModalProps = {
   addGender: AddComponent;
   addCountry: AddComponent;
   addYesOrNo: AddComponent;
+  addChoices: AddComponent;
 }
 type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:any}|string)];
 

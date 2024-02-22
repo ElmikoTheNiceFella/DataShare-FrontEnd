@@ -145,4 +145,72 @@ input[type="checkbox"]:checked + .isRequired::before {
     cursor: pointer;
   }
 }
+
 /* Choices Show */
+.inputContainer {
+  margin-top: 12px;
+  @include padding-x(20px);
+  label, span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  button {
+    all: unset;
+    float: right;
+    padding: 0px 8px 8px 8px;
+    cursor: pointer;
+  }
+}
+.shownChoice, .shownChoiceOther {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  background-color: $GRAY;
+  border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+  label {
+    display: flex;
+    gap: 15px;
+    width: 90%;
+    align-items: center;
+    @include padding-y(10px);
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 20px;
+    input {
+      all: unset;
+      border-bottom: 1px solid rgba($color: $BLACK, $alpha: 0.75);
+      cursor: text;
+    }
+  }
+  input[type="radio"] {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+  }
+  label::before {
+    content: '';
+    margin-left: 20px;
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 99px;
+    border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
+    background-color: white;
+    transition: 0.1s ease-out;
+  }
+  input:checked + label::before {
+    background-color: rgba($color: $BLUE, $alpha: 0.75);
+  }
+  button {
+    all: unset;
+    text-align: center;
+    width: 10%;
+    height: 40px;
+    cursor: pointer;
+  }
+}
+.shownChoice {
+  color: rgba($color: $BLACK, $alpha: 0.75);
+}
+.shownChoiceOther {
+  color: $BLACK;
+}
