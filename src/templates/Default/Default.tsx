@@ -11,10 +11,9 @@ import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
 import { useState, useEffect } from 'react';
 // Demo Data
-import { demoDesc } from '../../../demoData'
 import { Choices } from './components/Choices';
 
-const Default = () => {
+const Default = ({title, description}:{[key:string]:string}) => {
 
   /* ------------ */
   /* Form Content */
@@ -22,6 +21,8 @@ const Default = () => {
 
   const [content, setContent] = useState<any>({
     template: "default",
+    title,
+    description,
     sections: []
   });
 
@@ -161,14 +162,14 @@ const Default = () => {
         </div>
         {/* Form Title */}
         <h1 className={styles.formTitle}>
-          Festival of Cultures
+          {content.title}
         </h1>
       </header>
       <main style={{
         height: open[0] ? "calc(100vh - 150px)" : "auto"
       }} className={styles.formContainer}>
         {/* Form Description */}
-        <p className={styles.description}>{demoDesc}</p>
+        <p className={styles.description}>{content.description}</p>
         {/* Form Container */}
         <form className={styles.componentsContainer} action="#">
           {/* Render Sections */}
@@ -259,7 +260,10 @@ const Default = () => {
             </section>
           )}
           {/* Add Section */}
-          <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          <button type='button' onClick={() => handleOpen(["Publish"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          <button type='button' style={{
+            marginTop: "24px"
+          }} onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>

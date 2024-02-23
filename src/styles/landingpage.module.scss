@@ -1,0 +1,49 @@
+@import './Default/variables';
+
+.header {
+  height: 100vh;
+}
+.headerElements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+  height: 100%;
+  .inputsHeader {
+    padding: 48px;
+    h1 {
+      padding-bottom: 24px;
+      line-height: 42px;
+    }
+    .inputsContainer {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      font-size: 18px;
+      input, textarea {
+        all: unset;
+        padding: 12px 24px;
+        border-width: 2px;
+        border-style: solid;
+      }
+      input {
+        height: 32px;
+        
+      }
+      .create {
+        all: unset;
+        padding: 12px 0px;
+        border-width: 2px;
+        border-style: solid;
+        color: white;
+        text-align: center;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          background-color: #00000010;
+        }
+      }
+    }
+  }
+}
