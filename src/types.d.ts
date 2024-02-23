@@ -4,6 +4,11 @@ declare module "*.svg" {
   export default content;
 }
 
+interface StateProps {
+  title: string;
+  description: string;
+}
+
 /* -----------------------*/
 /* Default Template Types */
 /* -----------------------*/

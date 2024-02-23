@@ -23,12 +23,17 @@
       input, textarea {
         all: unset;
         padding: 12px 24px;
+        animation: start-inp-ta 1s cubic-bezier(0,.8,.08,.99) forwards;
         border-width: 2px;
         border-style: solid;
       }
       input {
         height: 32px;
-        
+        animation: start-input 1s cubic-bezier(0,.8,.08,.99) forwards;
+      }
+      textarea {
+        height: 200px;
+        animation: start-textarea 1s cubic-bezier(0,.8,.08,.99) forwards;
       }
       .create {
         all: unset;
@@ -45,5 +50,29 @@
         }
       }
     }
+  }
+}
+@keyframes start-inp-ta {
+  from {
+    padding: 0px 0px;
+  }
+  to {
+    padding: 12px 24px;
+  }
+}
+@keyframes start-input {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 32px;
+  }
+}
+@keyframes start-textarea {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 200px;
   }
 }

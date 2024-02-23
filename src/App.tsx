@@ -1,14 +1,20 @@
 import './App.scss'
 import Default from './templates/Default/Default';
-import { demoDesc } from '../demoData'
+import { useLocation } from 'react-router-dom';
 
 function App() {
+
+  const location = useLocation();
+
+  const { state } = location;
+
+  const { title, description } = state
 
   const template = "Default";
 
   return (
     <>
-      {template == "Default" && <Default title="Festival of Cultures" description={demoDesc} />}
+      {template == "Default" && <Default title={title} description={description} />}
     </>
   )
 }
