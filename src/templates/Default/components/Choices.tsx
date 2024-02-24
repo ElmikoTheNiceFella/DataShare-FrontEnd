@@ -15,7 +15,7 @@ export const Choices = ({ styles, component, position, section, open }: Componen
       <button type='button' onClick={() => open(["RemoveComponent", component[0], position, section[1]])} className={styles.removeSection}>
         <FontAwesomeIcon icon={faTrash} style={{ color: "#1C1D1E" }} />
       </button>
-      <div>
+      <div className={styles.shownChoicesContainer}>
         {component[1].choices.map((choice: string, i: number) => (
           <>
             {choice[0].length === 1 ?

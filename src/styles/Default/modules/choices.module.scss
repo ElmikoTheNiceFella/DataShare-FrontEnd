@@ -149,7 +149,7 @@ input[type="checkbox"]:checked + .isRequired::before {
 /* Choices Show */
 .inputContainer {
   margin-top: 12px;
-  @include padding-x(20px);
+  padding-left: 20px;
   label, span {
     font-weight: bold;
     font-size: 18px;
@@ -161,11 +161,15 @@ input[type="checkbox"]:checked + .isRequired::before {
     cursor: pointer;
   }
 }
+.shownChoicesContainer {
+  width: 100%;
+}
 .shownChoice, .shownChoiceOther {
   margin-top: 10px;
   display: flex;
   align-items: center;
   background-color: $GRAY;
+  width: 100%;
   border: 2px solid rgba($color: $BLACK, $alpha: 0.25);
   label {
     display: flex;

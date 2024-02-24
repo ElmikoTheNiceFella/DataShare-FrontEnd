@@ -9,7 +9,7 @@ import FM_LOGO from '../../../public/FormMaker.png'
 // Components
 import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // Demo Data
 import { Choices } from './components/Choices';
 
@@ -20,6 +20,7 @@ const Default = ({ title, description }: { [key: string]: string }) => {
   /* ------------ */
 
   const [content, setContent] = useState<any>({
+    id: "123",
     template: "default",
     title,
     description,
@@ -127,16 +128,11 @@ const Default = ({ title, description }: { [key: string]: string }) => {
   const handleAddChoices = (inputData: InputType, sectionID: number) => {
     handleAddComponent("choicesInput", inputData, sectionID)
   }
-  // Saving Changes
-  useEffect(() => {
-    window.localStorage.setItem('FORM_CONTENT', JSON.stringify(content))
-  }, [content])
 
-  // Getting Data After Refreshing
-  useEffect(() => {
-    const data = window.localStorage.getItem('FORM_CONTENT')
-    console.log(data)
-  }, [])
+  /* Publish Form */
+  const handlePublish = () => {
+    console.log(content)
+  }
 
   return (
     <>
@@ -263,7 +259,7 @@ const Default = ({ title, description }: { [key: string]: string }) => {
           <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           <button type='button' style={{
             marginTop: "24px"
-          }} onClick={() => handleOpen(["Publish"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
+          }} onClick={handlePublish} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>
