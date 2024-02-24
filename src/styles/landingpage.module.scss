@@ -1,12 +1,51 @@
 @import './Default/variables';
-
+.gridContainer {
+  height: 100%;
+  display: grid;
+  .nodeContainer {
+    display: flex;
+    width: 100%;
+    .node {
+      flex: 1;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #f5f4f2;
+      transition: 0.2s ease;
+      &:hover {
+        background: gray;
+      }
+    }
+  }
+}
 .header {
   height: 100vh;
 }
 .headerElements {
   display: flex;
   justify-content: center;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    .images {
+      img {
+        width: 60%;
+        text-align: center;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    flex-direction: column;
+    align-items: center;
+    .images {
+      img {
+        width: 40%;
+        text-align: center;
+      }
+    }
+  }
   align-items: center;
+  position: relative;
+  z-index: 2;
   gap: 5vw;
   height: 100%;
   .inputsHeader {
@@ -14,6 +53,7 @@
     h1 {
       padding-bottom: 24px;
       line-height: 42px;
+      transition: color 0.5s ease;
     }
     .inputsContainer {
       display: flex;
@@ -34,6 +74,9 @@
       textarea {
         height: 200px;
         animation: start-textarea 1s cubic-bezier(0,.8,.08,.99) forwards;
+        @media (max-width: 375px) {
+          animation: start-textarea-mobile 1s cubic-bezier(0,.8,.08,.99) forwards;
+        }
       }
       .create {
         all: unset;
@@ -74,5 +117,13 @@
   }
   to {
     height: 200px;
+  }
+}
+@keyframes start-textarea-mobile{
+  from {
+    height: 0px;
+  }
+  to {
+    height: 100px;
   }
 }

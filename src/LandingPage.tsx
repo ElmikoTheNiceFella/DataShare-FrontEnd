@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './styles/landingpage.module.scss'
 import LOGO_DARK from '../public/FormMakerLight.png'
@@ -7,6 +7,16 @@ import LOGO_LIGHT from '../public/FormMaker.png'
 const LandingPage = () => {
 
   const [dark, setDark] = useState(false)
+
+  const [matrix, setMatrix] = useState([window.innerWidth / 30, window.innerHeight / 30]);
+
+  useEffect(() => {
+    function handleResize() {
+      setMatrix([window.innerWidth / 30, window.innerHeight / 30])
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const [title, setTitle] = useState("")
 
@@ -18,17 +28,41 @@ const LandingPage = () => {
     navigate("/editor", { state: { title, description } })
   }
 
+  const handleThemeChange = (e: any) => {
+    setDark(!dark)
+  }
+
   return (
     <>
       <header style={{
-        backgroundColor: dark ? "#1C1D1E" : "#fff"
-      }} className={styles.header}>
-        <div>
-
+        backgroundColor: dark ? "#1C1D1E" : "#fff",
+        transition: "background-color 0.5s ease"
+      }} className={styles.header}
+        onClick={handleThemeChange}>
+        <div style={{
+          position: "absolute",
+          zIndex: 1,
+          width: "100%",
+          gridTemplateRows: `repeat(${matrix[1]}, 1fr)`,
+        }} className={styles.gridContainer}>
+          {Array.from({ length: matrix[1] }).map((_, i) => (
+            <div key={i} className={styles.nodeContainer}>
+              {Array.from({ length: matrix[0] }).map((_, j) => (
+                <div key={j} style={{
+                  backgroundColor: dark ? "#1C1D1E" : "#FFFFFF",
+                  borderColor: dark ? "#FFFFFF05" : "#1C1D1E07",
+                  transitionDelay: `${(dark ? i * matrix[0] * 0.0002 : j * 0.005)}s`
+                }} className={styles.node}></div>
+              ))}
+            </div>
+          ))}
         </div>
         <div className={styles.headerElements}>
-          <img src={dark ? LOGO_DARK : LOGO_LIGHT} alt="" />
-          <div style={{
+          <div className={styles.images} style={{ position: "relative" }}>
+            <img style={{ position: "absolute", opacity: dark ? 1 : 0, transition: "opacity 0.5s ease" }} src={LOGO_DARK} alt="" />
+            <img style={{ position: "relative", opacity: dark ? 0 : 1, transition: "opacity 0.5s ease" }} src={LOGO_LIGHT} alt="" />
+          </div>
+          <div onClick={e => e.stopPropagation()} style={{
             backgroundColor: dark ? "#FFFFFF10" : "#DFE3E850"
           }} className={styles.inputsHeader}>
             <h1 style={{
