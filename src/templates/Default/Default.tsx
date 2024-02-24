@@ -9,7 +9,8 @@ import FM_LOGO from '../../../public/FormMaker.png'
 // Components
 import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useLocalStorage, { LocalStorage } from '../../hooks/useLocalStorage';
 // Demo Data
 import { Choices } from './components/Choices';
 
@@ -129,6 +130,25 @@ const Default = ({ title, description }: { [key: string]: string }) => {
     handleAddComponent("choicesInput", inputData, sectionID)
   }
 
+  /* ------------ */
+  /* Save Changes */
+  /* ------------ */
+
+  const { getItem, setItem, deleteItem }: LocalStorage = useLocalStorage();
+
+  useEffect(() => {
+    // Load Changes From Local Storage
+    const data = getItem("AKDK_DS_FORM")
+    if (data) {
+      setContent(JSON.parse(data))
+    }
+  }, [])
+
+  useEffect(() => {
+    // Save Changes To Local Storage
+    setItem("AKDK_DS_FORM", content)
+  }, [content])
+
   /* Publish Form */
   const handlePublish = () => {
     console.log(content)
@@ -149,6 +169,7 @@ const Default = ({ title, description }: { [key: string]: string }) => {
         addCountry={handleAddCountry}
         addYesOrNo={handleAddYesOrNo}
         addChoices={handleAddChoices} />
+
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>

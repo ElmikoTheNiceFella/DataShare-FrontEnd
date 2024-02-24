@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useLocalStorage  from './hooks/useLocalStorage'
 import styles from './styles/landingpage.module.scss'
 import LOGO_DARK from '../public/FormMakerLight.png'
 import LOGO_LIGHT from '../public/FormMaker.png'
+
+interface StorageState {
+  title: string
+  description: string
+}
 
 const LandingPage = () => {
 
@@ -10,13 +16,31 @@ const LandingPage = () => {
 
   const [matrix, setMatrix] = useState([window.innerWidth / 30, window.innerHeight / 30]);
 
+  const myLocalStorage = useLocalStorage()
+
+  const [storageState, setStorageState] = useState<StorageState|null>(null)
+
   useEffect(() => {
     function handleResize() {
       setMatrix([window.innerWidth / 30, window.innerHeight / 30])
+    } 
+    
+    const localData: any = JSON.parse(myLocalStorage.getItem("AKDK_DS_FORM") || "{}")
+
+    if (localData.title && localData.description) {
+      setStorageState(localData)
     }
+    console.log(localData.title, localData.description)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+    console.log(storageState)
+    if (storageState) {
+      navigate("/editor", { state: { title: storageState.title, description: storageState.description } })
+    }
+  }, [storageState])
 
   const [title, setTitle] = useState("")
 
