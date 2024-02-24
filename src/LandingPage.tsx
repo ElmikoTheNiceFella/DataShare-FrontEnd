@@ -28,7 +28,7 @@ const LandingPage = () => {
     navigate("/editor", { state: { title, description } })
   }
 
-  const handleThemeChange = (e: any) => {
+  const handleThemeChange = () => {
     setDark(!dark)
   }
 

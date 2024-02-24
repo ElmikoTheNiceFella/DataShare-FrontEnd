@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 // Demo Data
 import { Choices } from './components/Choices';
 
-const Default = ({title, description}:{[key:string]:string}) => {
+const Default = ({ title, description }: { [key: string]: string }) => {
 
   /* ------------ */
   /* Form Content */
@@ -260,10 +260,10 @@ const Default = ({title, description}:{[key:string]:string}) => {
             </section>
           )}
           {/* Add Section */}
-          <button type='button' onClick={() => handleOpen(["Publish"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
+          <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           <button type='button' style={{
             marginTop: "24px"
-          }} onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
+          }} onClick={() => handleOpen(["Publish"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>
