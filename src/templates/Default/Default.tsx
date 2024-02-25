@@ -9,10 +9,12 @@ import FM_LOGO from '../../../public/FormMaker.png'
 // Components
 import { Modal, Text, FullName, Gender, Country, YesOrNo } from './components';
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import useLocalStorage, { LocalStorage } from '../../hooks/useLocalStorage';
 // Demo Data
 import { Choices } from './components/Choices';
+// ID Generator
+import { v4 as uuid } from 'uuid';
 
 const Default = ({ title, description }: { [key: string]: string }) => {
 
@@ -20,8 +22,10 @@ const Default = ({ title, description }: { [key: string]: string }) => {
   /* Form Content */
   /* ------------ */
 
+  const id = useMemo(() => uuid(), [])
+
   const [content, setContent] = useState<any>({
-    id: "123",
+    id,
     template: "default",
     title,
     description,
