@@ -23,6 +23,8 @@ type ModalProps = {
   addSection: (sectionName: string) => void;
   removeSection: (id: number) => void;
   removeComponent: (sectionID: number, componentID: number) => void;
+  handlePublish: (content:any) => void;
+  content: any;
   addText: AddComponent;
   addFullName: AddComponent;
   addGender: AddComponent;
@@ -30,7 +32,7 @@ type ModalProps = {
   addYesOrNo: AddComponent;
   addChoices: AddComponent;
 }
-type HandleSubmitArgs = string | [string, number] | [string, number, ({[key:string]:any}|string)];
+type HandleSubmitArgs = string | [string, number] | [string, number, ({ [key: string]: any } | string)];
 
 // Add Components
 type AddComponentProps = {
@@ -55,8 +57,8 @@ type RemoveComponentProps = {
 // Component Props
 type ComponentProps = {
   styles: CSSModuleClasses;
-  component:any;
-  open: (arg:[string, string, number, number]) => void;
+  component: any;
+  open: (arg: [string, string, number, number]) => void;
   position: number;
   section: any;
 }
@@ -65,4 +67,10 @@ type TextEditProps = {
   back: (el: string) => void;
   sectionID: number;
   handleSubmit: (type: HandleSubmitArgs) => (e: React.SyntheticEvent) => void;
+}
+
+type PublishProps = { 
+  content: any; 
+  close: () => void;
+  handlePublish: (content:any) => void;
 }

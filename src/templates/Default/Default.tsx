@@ -15,6 +15,8 @@ import useLocalStorage, { LocalStorage } from '../../hooks/useLocalStorage';
 import { Choices } from './components/Choices';
 // ID Generator
 import { v4 as uuid } from 'uuid';
+// Axios
+import axios from 'axios';
 
 const Default = ({ title, description }: { [key: string]: string }) => {
 
@@ -154,8 +156,8 @@ const Default = ({ title, description }: { [key: string]: string }) => {
   }, [content])
 
   /* Publish Form */
-  const handlePublish = () => {
-    console.log(content)
+  const handlePublish = async(content:any) => {
+    await axios.post('http://localhost:3000/', content)
   }
 
   return (
@@ -167,12 +169,14 @@ const Default = ({ title, description }: { [key: string]: string }) => {
         addSection={handleAddSection}
         removeSection={handleRemoveSection}
         removeComponent={handleRemoveComponent}
+        handlePublish={handlePublish}
         addText={handleAddText}
         addFullName={handleAddFullName}
         addGender={handleAddGender}
         addCountry={handleAddCountry}
         addYesOrNo={handleAddYesOrNo}
-        addChoices={handleAddChoices} />
+        addChoices={handleAddChoices}
+        content={content} />
 
       <header className={styles.header}>
         {/* LOGO */}
@@ -284,7 +288,7 @@ const Default = ({ title, description }: { [key: string]: string }) => {
           <button type='button' onClick={() => handleOpen(["AddSection"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Add Section</button>
           <button type='button' style={{
             marginTop: "24px"
-          }} onClick={handlePublish} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
+          }} onClick={() => handleOpen(["Publish"])} className={styles.addSection}><FontAwesomeIcon icon={faPlus} />&nbsp;Publish Form</button>
           {/* DEBUG BUTTON (IGNORE) */}
           {/* <button onClick={() => console.log(content)} className={styles.addSection}>LOG CONTENT</button> */}
         </form>

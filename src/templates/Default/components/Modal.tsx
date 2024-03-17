@@ -3,9 +3,9 @@ import styles from '../../../styles/Default/modules/modal.module.scss'
 // Hooks
 import { useState } from 'react';
 // Modal Components
-import { AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit, YesOrNoEdit, ChoicesEdit } from '.'
+import { Publish,AddSection, RemoveSection, RemoveComponent,AddComponent, TextEdit, FullNameEdit, GenderEdit, CountryEdit, YesOrNoEdit, ChoicesEdit } from '.'
 
-const Modal = ({ open, close, addSection, removeSection, removeComponent, addText, addFullName, addGender, addCountry, addYesOrNo, addChoices }: ModalProps) => {
+const Modal = ({ open, close, addSection, removeSection, removeComponent, addText, addFullName, addGender, addCountry, addYesOrNo, addChoices, handlePublish, content }: ModalProps) => {
 
   /* --------------------------------------------------------- */
   /* Adding Changes And Calling Content Manipulation Functions */
@@ -120,6 +120,7 @@ const Modal = ({ open, close, addSection, removeSection, removeComponent, addTex
         {open[0] == "RemoveComponent" && <RemoveComponent close={close} handleRemove={removeComponent} sectionID={+open[3]} componentType={open[1]} componentID={+open[2]} />}
         {/* Add Text Input Component */}
         {open[0] == "AddComponent" && Component != "" && <Component sectionID={+open[1]} handleSubmit={handleSubmit} back={handleComponent} />}
+        {open[0] == "Publish" && <Publish content={content} close={close} handlePublish={handlePublish} />}
       </div>
     </div>
   )
